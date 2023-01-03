@@ -21,7 +21,7 @@ root.render(
           clientId="CbwboB0RC7xwrSjegPeeYip5otVij30L"
           //redirectUri= {window.location.origin}
           //redirectUri="http://localhost:3000/login"
-          redirectUri="https://test-deploy-topaz-nine.vercel.app/"
+          redirectUri="https://test-deploy-topaz-nine.vercel.app/login"
         >
           <App />
         </Auth0Provider>
