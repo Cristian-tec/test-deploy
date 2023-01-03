@@ -25,7 +25,7 @@ import { useDispatch } from "react-redux";
 import { getAllProducts } from "./actions";
 
 import axios from 'axios';
-axios.defaults.baseURL = 'http://localhost:3001';
+axios.defaults.baseURL = 'http://localhost:3001/';
 
 function App() {
   const dispatch = useDispatch();
