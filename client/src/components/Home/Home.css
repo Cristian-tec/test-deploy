@@ -1,0 +1,193 @@
+.container-directo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 20px;
+    width: 1400px;
+    margin-bottom:-20px;
+}
+
+.acceso-directo11 img{
+    height: 230px;
+    width: 300px;
+}
+.button-pediya1{
+    background-color:#EF7E63; 
+    border: none;
+    border-radius: 10px;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    margin-top: 5px;
+}
+
+
+.acceso-directo22 img{
+    height: 250px;
+    width: 250px;
+    margin-top: -27px;
+}
+.button-pediya2{
+    background-color:#EF7E63; 
+    border: none;
+    border-radius: 10px;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    margin-top: 5px;
+}
+
+
+.acceso-directo33 img{
+    height: 250px;
+    width: 250px;
+    margin-top: 20px;
+    
+}
+
+.button-pediya3{
+    background-color:#EF7E63; 
+    border: none;
+    border-radius: 10px;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    margin-top: 5px;
+}
+
+.acceso-directo11 h4{
+    color: white;
+    font-size: 2rem;
+
+    font-family: 'Lilita One', cursive;
+}
+
+.acceso-directo22 h4{
+    color: white;
+    font-size: 1.8rem;
+
+    font-family: 'Lilita One', cursive;
+}
+
+.acceso-directo33 h4{
+    color: white;
+    font-size: 1.8rem;
+    margin-top: -45px;
+    font-family: 'Lilita One', cursive;
+}
+
+.acceso-directo11{
+   
+    width: 33.33%;
+    height: 600px;
+    background-color: #FE3838;
+    color: #1b1b1b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+   
+}
+
+.acceso-directo22{
+   
+    width: 33.33%;
+    height: 600px;
+    background-color: #E49F36;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   flex-direction: column;
+    
+}
+.acceso-directo33{
+
+    width: 33.33%;
+    height: 600px;
+    background-color: #502314;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   flex-direction: column;
+  
+    
+}
+
+.main-container-home{
+    background-image: url('./fondoproyecto.png');
+
+}
+.phrase-home{
+    color: #EF7E63;
+    font-size: 46px;
+    font-family: 'Fredoka One', cursive;
+}
+.phrase-span{
+    color: #EF7E63;
+    font-size: 46px;
+    font-weight: bold;
+    font-family: 'Fredoka One', cursive;
+}
+
+.phrase-button{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 300px;
+    margin-right: 300px;
+
+}
+
+.p-b-main{
+    height: 0.01px;
+    margin-top: 100px;
+   
+}
+
+.button-pediya{
+    background-color:#EF7E63; 
+    border: none;
+    border-radius: 10px;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+}
+
+
+.carousel{
+    height:90%;
+    width: 90%;
+   padding: auto;
+   margin-left: 5%;
+}
+
+.w-d-y{
+    font-family: 'Lilita One', cursive;
+    font-size: 4.5rem; 
+    color: #502314;
+}

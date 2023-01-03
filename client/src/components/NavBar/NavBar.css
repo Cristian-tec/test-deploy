@@ -1,0 +1,56 @@
+.nav-container li {
+    display: inline;
+    margin: 30px;
+    color: white;
+    font-family: 'Noto Nastaliq Urdu', serif;
+
+
+
+}
+
+.nav-container {
+    background-color: #f5ebdc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10 0px;
+}
+
+.nav-container a {
+    text-decoration: none;
+    color: #651616;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.nav-container a:hover {
+    text-decoration: underline;
+    color: #651616;
+    font-size: 18px;
+}
+
+
+.button-login {
+    background-color: rgb(229, 69, 69);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.5s;
+}
+
+.button-login:hover {
+    background-color: rgb(199, 60, 60);
+}
+
+.nav-container img {
+    height: 120px;
+    width: 200px;
+}

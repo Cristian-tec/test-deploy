@@ -1,0 +1,90 @@
+
+    {
+        "branch": [
+        {
+            "station": 1,
+            "address": "Rioja 1634",
+            "locality": "Rosario, Santa Fe",
+            "gps": "Rioja 1634, S2000AYZ Rosario, Santa Fe",
+          
+    
+        },
+        {
+            "station": 2,
+            "address": "Pres. Roca 549",
+            "locality": "Rosario,Santa Fe",
+            "gps": "Pres. Roca 549, S2000 CXK, Santa Fe"
+            
+        },
+        {
+            "station": 3,
+            "address": "Av. Francia 1049",
+            "locality": "Rosario, Santa Fe",
+            "gps": "Av. Francia 1049, S2002QRC Rosario, Santa Fe"
+            
+        },
+        {
+            "station": 4,
+            "address": "Sarmiento 440",
+            "locality": "Victoria, Entre Ríos",
+            "gps": "Sarmiento 440, E3153 Victoria, Entre Ríos"
+           
+        },
+        {
+            "station": 5,
+            "address": "B. Soria 152",
+            "locality": "Santa Rosa de Calamuchita, Córdoba",
+            "gps": "B. Soria 152, Santa Rosa de Calamuchita, Córdoba"
+            
+        },
+        {
+            "station": 6,
+            "address": "Av. Belgrano 1353",
+            "locality": "Mina Clavero, Córdoba",
+            "gps": "Av. Belgrano 1353, Mina Clavero, Córdoba"
+          
+        },
+        {
+            "station": 7,
+            "address": "Av. Laurencena 244",
+            "locality": "Paraná, Entre Ríos",
+            "gps": "Av. Laurencena 244, E3100 Paraná, Entre Ríos"
+            
+        },
+        {
+            "station": 8,
+            "address": "Las Magnolias 1087",
+            "locality": "Federación, Entre Ríos",
+            "gps": "Las Magnolias 1087, E3206CIV Federación, Entre Ríos"
+            
+        },
+        {
+            "station": 9,
+            "address": "Obispo Oro 333",
+            "locality": "Cordoba",
+            "gps": "Obispo Oro 333, X5000BFG Córdoba"
+     
+        },
+        {
+            "station": 10,
+            "address": "25 de Mayo 839",
+            "locality": " Mendoza",
+            "gps": "25 de Mayo 839, M5500AEA Mendoza"
+         
+        },
+        {
+            "station": 11,
+            "address": "Ayacucho 42",
+            "locality": "Resistencia, Chaco",
+            "gps": "Ayacucho 42, H3500AJB Resistencia, Chaco"
+           
+        },
+        {
+            "station": 12,
+            "address": "Emilio Mitre 1072",
+            "locality": "CABA",
+            "gps": "Parque Chacabuco, Emilio Mitre 1072, C1424AYV CABA"
+           
+        }
+    ]
+}
