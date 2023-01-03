@@ -20,7 +20,8 @@ root.render(
           //domain={REACT_APP_DOMAIN}
           clientId="CbwboB0RC7xwrSjegPeeYip5otVij30L"
           //redirectUri= {window.location.origin}
-          redirectUri="http://localhost:3000/login"
+          //redirectUri="http://localhost:3000/login"
+          redirectUri="https://test-deploy-topaz-nine.vercel.app/"
         >
           <App />
         </Auth0Provider>
