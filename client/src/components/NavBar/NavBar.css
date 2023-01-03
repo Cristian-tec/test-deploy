@@ -50,7 +50,9 @@
     background-color: rgb(199, 60, 60);
 }
 
-.nav-container img {
-    height: 120px;
-    width: 200px;
+.nav-container {
+    height:50px;
+    width: 50px;
+    border-radius: 10px;
 }
+
