@@ -37,7 +37,7 @@ export default function NavBar(props) {
             <b>{userN.name}</b>
           </label>
           &nbsp;&nbsp;
-          {/*  <img className="image-logo" src={userN.picture} alt="image" /> */}
+          <img className="image-logo" src={userN.picture} alt="image" />
         </>
       );
     } else {
@@ -100,7 +100,7 @@ export default function NavBar(props) {
             </PopoverContent>
           </Popover>
         </Box>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;
         {/* <Link to="/login">
           <Button colorScheme={'red'} className="button-login"><Text textDecoration={'none'}>LOG IN</Text></Button>
         </Link> */}
