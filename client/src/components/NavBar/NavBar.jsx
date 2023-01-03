@@ -37,7 +37,7 @@ export default function NavBar(props) {
             <b>{userN.name}</b>
           </label>
           &nbsp;&nbsp;
-          <div className="image-login"><img className="image-login1" src={userN.picture} alt="image-logo" /> </div>
+          <div className="image-login"><img className="image-login-1" src={userN.picture} alt="image-logo" /> </div>
           
         </>
       );
