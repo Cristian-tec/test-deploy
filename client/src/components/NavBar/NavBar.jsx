@@ -32,12 +32,12 @@ export default function NavBar(props) {
       //console.log('entrando...');
       return (
         <>
-          <button onClick={() => logout()} className="button-login"><b>LOG OUT</b></button>
+          <button onClick={() => logout()} className="button-login"><b>LOG OUT</b></button>&nbsp;&nbsp;&nbsp;
           <label className="name-login">
             <b>{userN.name}</b>
           </label>
-          &nbsp;&nbsp;
-          <div className="cont-image-login"><img className="image-login-1" src={userN.picture} alt="image-logo" /> </div>
+          &nbsp;&nbsp;&nbsp;
+         <img className="image-logo" src={userN.picture} alt="image-logo" />
           
         </>
       );
@@ -60,7 +60,7 @@ export default function NavBar(props) {
     <div>
       <div className="nav-container">
         <Link to="/">
-          <img src={BurgerLogo} alt="." />
+          <img className="burger-logo" src={BurgerLogo} alt="." />
         </Link>
         <ul>
           <li>
@@ -110,7 +110,7 @@ export default function NavBar(props) {
           <Button colorScheme={'red'} className="button-login"><Text textDecoration={'none'}>LOG IN</Text></Button>
         </Link> */}
         {getUserData()}
-        &nbsp;&nbsp;&nbsp;
+
         {/* <Button onClick={() => logout()} colorScheme={'red'} className="button-login"><Text textDecoration={'none'}>LOG OUT</Text></Button> */}
       </div>
     </div>
