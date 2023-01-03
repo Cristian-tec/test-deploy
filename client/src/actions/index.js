@@ -25,14 +25,14 @@ export function setNewPosition(params) {
 
 export function getAllProducts() {
   return async function (dispatch) {
-    var json = await axios.get("http://localhost:3001/products");
+    var json = await axios.get("/products");
     return dispatch({ type: "GET_ALL_PRODUCTS", payload: json.data });
   };
 }
 
 export function getProductID(id) {
   return async function (dispatch) {
-    var json = await axios.get("http://localhost:3001/products/" + id);
+    var json = await axios.get("/products/" + id);
     return dispatch({ type: "GET_PRODUCTS_ID", payload: json.data });
   };
 }
@@ -103,7 +103,7 @@ export function restartCart(params) {
 
 export function addProductsToCart(params) {
   return async function () {
-    var json = await axios.post("http://localhost:3001/payment", params);
+    var json = await axios.post("/payment", params);
     return json.data;
   };
 }
@@ -129,7 +129,7 @@ export function userActive(state) {
 }
 export function addOrderToDB(params) {
   return async function () {
-    var json = await axios.post("http://localhost:3001/orders", params);
+    var json = await axios.post("/orders", params);
     return json.data;
   };
 }
