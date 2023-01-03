@@ -590,7 +590,7 @@ export default function SignInSide() {
                                 id="password"
                                 autoComplete="current-password"
                             />
-                            <button onClick={prueba}> PROBAR </button>
+                           {/*  <button onClick={prueba}> PROBAR </button> */}
                             {
                                 isLoginBD()
                             }
@@ -609,20 +609,9 @@ export default function SignInSide() {
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
             >
-                {/* <DialogTitle id="alert-dialog-title">
-                    {"Usuario logueado con éxito!"}
-                </DialogTitle> */}
                 <DialogContent>
-                    {/*  <DialogContentText id="alert-dialog-description">
-                        Dale 'OK' para redirigir...
-                    </DialogContentText> */}
-                    {/*  <Alert severity="success">Click 'OK' for redirect...!</Alert> */}
                     {updateUser()}
                 </DialogContent>
-                {/*  <DialogActions>
-                    <Button onClick={handleClose}>OK</Button>
-                    <Button onClick={handleUpdate} autoFocus>Update data</Button>
-                </DialogActions> */}
             </Dialog>
 
         </ThemeProvider>
