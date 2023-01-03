@@ -1,11 +1,8 @@
 .nav-container li {
     display: inline;
-    margin: 30px;
+    margin: 20px;
     color: white;
     font-family: 'Noto Nastaliq Urdu', serif;
-
-
-
 }
 
 .nav-container {

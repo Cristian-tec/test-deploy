@@ -100,15 +100,16 @@ export default function NavBar(props) {
             </PopoverContent>
           </Popover>
         </Box>
-        &nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;
         {/* <Link to="/login">
           <Button colorScheme={'red'} className="button-login"><Text textDecoration={'none'}>LOG IN</Text></Button>
         </Link> */}
-        &nbsp;&nbsp;&nbsp;
+
         {/*   <Link to="/login">
           <Button colorScheme={'red'} className="button-login"><Text textDecoration={'none'}>LOG IN</Text></Button>
         </Link> */}
         {getUserData()}
+        &nbsp;&nbsp;&nbsp;
         {/* <Button onClick={() => logout()} colorScheme={'red'} className="button-login"><Text textDecoration={'none'}>LOG OUT</Text></Button> */}
       </div>
     </div>
