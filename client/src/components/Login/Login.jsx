@@ -144,7 +144,7 @@ export default function SignInSide() {
             email: data.get('email'),
             password: data.get('password'),
         }
-        let json = await axios.post("https://test-deploy-topaz-nine.vercel.app/user/login", dat);
+        let json = await axios.post("https://test-deploy-production-3b4b.up.railway.app/user/login", dat);
         console.log(json);
         if (json.data.token !== null) {
             document.cookie = `token=${json.data.token}; max-age=${60 * 1}; path=/; samesite=strict`
@@ -285,7 +285,7 @@ export default function SignInSide() {
                     currentLocation: lat + ' ' + long
                 }
 
-                let json = await axios.post("https://test-deploy-topaz-nine.vercel.app/user", dat);
+                let json = await axios.post("https://test-deploy-production-3b4b.up.railway.app/user", dat);
                 document.cookie = `token=${json.data.token}; max-age=${60 * 1}; path=/; samesite=strict`
                 //console.log(json.data, 'fff'); // porque no lo alcanzo a ver
                 //dispatch(saveUser(json.data));
@@ -336,7 +336,7 @@ export default function SignInSide() {
             token: b
         }
 
-        const test = await axios.post("https://test-deploy-topaz-nine.vercel.app/user/test", dat);
+        const test = await axios.post("https://test-deploy-production-3b4b.up.railway.app/user/test", dat);
         //console.log(test.data);
         if (test.data.email) {
             console.log('Token funcionando');
@@ -375,7 +375,7 @@ export default function SignInSide() {
     const handleUpdate = async (e) => {
         e.preventDefault();
         //console.log(input);
-        const updateSend = await axios.put('https://test-deploy-topaz-nine.vercel.app/user', input)
+        const updateSend = await axios.put('https://test-deploy-production-3b4b.up.railway.app/user', input)
         goRoute.push('/')
     }
 
