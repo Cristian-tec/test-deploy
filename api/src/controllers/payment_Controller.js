@@ -26,7 +26,9 @@ const createPayment = async (req, res) => {
     },
     auto_return: "approved",
     notification_url:
-      "https://d182-2803-9800-94c0-845b-1598-d45c-29e7-8ad1.sa.ngrok.io/notificationPayment",
+     /*  "https://d182-2803-9800-94c0-845b-1598-d45c-29e7-8ad1.sa.ngrok.io/notificationPayment", */
+     "https://test-deploy-production-3b4b.up.railway.app/notificationPayment",
+      //notificatip
     binary_mode: true,
   };
 
