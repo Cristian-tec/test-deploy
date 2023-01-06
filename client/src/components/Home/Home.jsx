@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import "./Home.css";
 import Carousel from "../carousel/carousel";
 import { MdOutlineDeliveryDining } from "react-icons/md"
+import Testimonial from "../Testimonial/index.js";
 
 
 export default function Home() {
@@ -65,7 +66,7 @@ export default function Home() {
       <div>
         <Carousel />
       </div>
-
+      <Testimonial />
       <Footer />
     </div>
   );
