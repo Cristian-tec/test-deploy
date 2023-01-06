@@ -23,11 +23,6 @@ const basename = path.basename(__filename);
 
 const modelDefiners = [];
 
-/* tabla_Products(sequelize)
-tabla_Orders(sequelize)
-tabla_User(sequelize)
-tabla_Localities(sequelize) */
-
 // Leemos todos los archivos de la carpeta Models, los requerimos y agregamos al arreglo modelDefiners
 fs.readdirSync(path.join(__dirname, "/models"))
   .filter(
@@ -53,39 +48,6 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 const { User, Localities, Branches, Products, Categories, Orders } =
   sequelize.models;
-
-// Aca vendrian las relaciones
-// Product.hasMany(Reviews);
-/* Localities.hasMany(User);
-User.belongsTo(Localities);
-
-Localities.hasMany(Branches);
-Branches.belongsTo(Localities);
-
-Categories.hasMany(Products);
-Products.belongsTo(Categories);
-
-User.hasMany(Products);
-Products.belongsTo(User);
-
-Branches.hasMany(Orders);
-Orders.belongsTo(Branches);
-
-Orders.belongsToMany(Products, { through: 'OrderProduct' });
-Products.belongsToMany(Orders, { through: 'OrderProduct' });
-
-Products.belongsToMany(Branches, { through: 'ProductBranch' });
-Branches.belongsToMany(Products, { through: 'ProductBranch' });
-
-// Recordar que pide relacionar N:M
-//Recipe.belongsToMany(Diet, { through: 'Recipe_Diet'})
-//Diet.belongsToMany(Recipe, { through: 'Recipe_Diet'})
-
-Orders.belongsToMany(Products, { through: 'Order_Products'})
-Products.belongsToMany(Orders, { through: 'Order_Products'}) 
-
-Products.belongsToMany(Branches, { through: 'Products_Branch'})
-Branches.belongsToMany(Products, { through: 'Products_Branch'})  */
 
 Localities.belongsToMany(User, { through: "UserLocalities" });
 User.belongsToMany(Localities, { through: "UserLocalities" });
