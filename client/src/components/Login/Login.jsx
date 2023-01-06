@@ -58,6 +58,7 @@ function Login(props) {
 const theme = createTheme();
 
 export default function SignInSide() {
+    //https://test-deploy-production-3b4b.up.railway.app
 
     const { loginWithRedirect, user, isAuthenticated, logout, isLoading } = useAuth0();
     //console.log(JSON.stringify(user) + 'OKAOKA');
@@ -69,16 +70,10 @@ export default function SignInSide() {
         //Obtenemos latitud y longitud
         lat = pos.coords.latitude;
         long = pos.coords.longitude;
-        //Mostramos la posición
-        //posElt.textContent = `${lat}, ${long}`;
-        //generamos enlace a la posición
-        //console.log(lat, long);
-        /* posLinkElt.href = `https://maps.google.com/?q=${lat},${long}`;
-          posLinkElt.textContent = 'Mostrar tu posición en un mapa'; */
-        //return (lat + ' ' + long);
+  
 
         const coordinates = (lat + ' ' + long);
-        console.log(coordinates + ' <<===');
+        // console.log(coordinates + ' <<===');
         /* let data = {
             email: user.email,
             currentLocation: coordinates
@@ -148,6 +143,7 @@ export default function SignInSide() {
         console.log(json);
         if (json.data.token !== null) {
             document.cookie = `token=${json.data.token}; max-age=${60 * 1}; path=/; samesite=strict`
+            //window.localStorage.setItem('userL', json.data.email)
             setButtonGoogle(true);
             dispatch(saveUser(json.data));
             dispatch(userActive(true));
@@ -166,10 +162,11 @@ export default function SignInSide() {
         //console.log('hiciste click');
         loginWithRedirect();
     }
-    //(isAuthenticated) ? isLogin() : isLogout()
+
     const isLogin = () => {
 
         if (isAuthenticated) {
+
             return (
                 <>
                     <Button
@@ -240,6 +237,7 @@ export default function SignInSide() {
                 </>
             )
         } else if (buttonGoogle || activeUser) {
+
             return (
                 <>
                     <Button
@@ -294,19 +292,11 @@ export default function SignInSide() {
                 dispatch(userActive(true));
                 handleClickOpen();
 
-                // await acquireLocation();
-                //enviar mail
-                // console.log('ENTROOO');
-                //goRoute.push('/')
             }
         }
-        //console.log(lat, long);
-
         autenticated();
 
     }, [isAuthenticated])
-
-    //    console.log(userN);
 
     // ------------------------------------------------------------
 
@@ -317,13 +307,19 @@ export default function SignInSide() {
         setOpen(true);
     };
 
-    const handleClose = () => {
+    const handleClose = async () => {
+        // aca podria cpturar un tipo de dato que ya estaria cargado
         setOpen(false);
+        // -------------------- CREACION DE LOCALSTORAGE ---------------------------------
+        let userDate = await axios.post("https://test-deploy-production-3b4b.up.railway.app/user/one", { email: user.email });
+        console.log(userDate.data);
+        window.localStorage.setItem('userL', JSON.stringify(userDate.data));
         goRoute.push('/')
     };
 
     //-----------------------------------------------------------------
 
+    // ----- FUNCION QUE USE PARA PROBAR EL TOKEN ---------
     const prueba = async (e) => {
         e.preventDefault();
         //const token1 = document.cookie.replace('token=', '')
@@ -336,6 +332,7 @@ export default function SignInSide() {
             token: b
         }
 
+
         const test = await axios.post("https://test-deploy-production-3b4b.up.railway.app/user/test", dat);
         //console.log(test.data);
         if (test.data.email) {
@@ -343,9 +340,8 @@ export default function SignInSide() {
         } else {
             console.log('token expirado..');
         }
-
     }
-
+    //--------------------------------------------------------
 
     // ------------ CONTROL DE FORMULARIO -------------------
 
@@ -368,14 +364,17 @@ export default function SignInSide() {
             [property]: value,
             email: user.email
         })
-
-        // console.log(input);
     }
 
     const handleUpdate = async (e) => {
         e.preventDefault();
-        //console.log(input);
+        // Aca envio los datos del formulario cdo es el primer ingreso para completar los datos
         const updateSend = await axios.put('https://test-deploy-production-3b4b.up.railway.app/user', input)
+        //sino aca que actualizaria los datos aca hacer una consulta de usuario
+        // -------------------- CREACION DE LOCALSTORAGE ---------------------------------
+        let userDate = await axios.post("https://test-deploy-production-3b4b.up.railway.app/user/one", { email: user.email });
+        window.localStorage.setItem('userL', JSON.stringify(userDate.data));
+        console.log(userDate.data);
         goRoute.push('/')
     }
 
@@ -383,7 +382,6 @@ export default function SignInSide() {
     //-------------------------------------------------------
     const updateUser = () => {
         let state;
-        //console.log(userN);
         (!userN.first_name || !userN.last_name || !userN.phone || !userN.address) ? state = true : state = false
         if (state === true) {
             return (
@@ -507,9 +505,7 @@ export default function SignInSide() {
                                 <Typography gutterBottom variant="h5">
                                     <b>Welcome: </b>{userN.first_name + ' ' + userN.last_name}
                                 </Typography>
-                                {/*  <Typography variant="body2" color="textSecondary" component="p" gutterBottom>
-                                    Please, complete your data.
-                                </Typography> */}
+
                                 <br />
                                 <Grid item xs={12}>
                                     <Button
@@ -590,7 +586,7 @@ export default function SignInSide() {
                                 id="password"
                                 autoComplete="current-password"
                             />
-                           {/*  <button onClick={prueba}> PROBAR </button>  */}
+                            <button onClick={prueba}> PROBAR </button>
                             {
                                 isLoginBD()
                             }
@@ -609,6 +605,7 @@ export default function SignInSide() {
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
             >
+
                 <DialogContent>
                     {updateUser()}
                 </DialogContent>
@@ -617,4 +614,6 @@ export default function SignInSide() {
         </ThemeProvider>
     );
 }
+
+
 

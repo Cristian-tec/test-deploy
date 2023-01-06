@@ -9,6 +9,12 @@ const getUsers = async () => {
   return result;
 };
 
+const getUser = async (params) => {
+  const { email } = params;
+  const result = await User.findOne({ where: { email: email } });
+  return result;
+};
+
 const generateUser = async (params) => {
   try {
     const { name, email, picture } = params;
@@ -131,6 +137,7 @@ const validateToken = (req, res, next) => {
 };
 
 module.exports = {
+  getUser,
   getUsers,
   generateUser,
   updateUser,

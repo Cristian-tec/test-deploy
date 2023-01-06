@@ -20,28 +20,45 @@ import {
   PopoverAnchor,
 } from "@chakra-ui/react";
 
-import SignInSide from '../Login/Login'
 import { useAuth0 } from '@auth0/auth0-react';
 
+import { saveUser, eraseUser, userActive } from '../../actions/index'
+
 export default function NavBar(props) {
-  const userN = useSelector((state) => state.user);
-  //console.log(userN, '*');
+
+  const dispatch = useDispatch();
+
+  const { loginWithRedirect, user, isAuthenticated, logout, isLoading } = useAuth0();
+
+  const handleLogout = () => {
+    window.localStorage.setItem('userL', '');
+    logout();
+  }
 
   const getUserData = () => {
-    if (userN.email) {
-      //console.log('entrando...');
+
+    let item = window.localStorage.getItem('userL');
+    let a;
+    if (item) {
+      a = JSON.parse(item);
+    } else {
+      a = { email: '' };
+    }
+
+    if (a.email) {
+      //console.log('hay userN.email');
       return (
         <>
-          <button onClick={() => logout()} className="button-login"><b>LOG OUT</b></button>&nbsp;&nbsp;&nbsp;
+          <button onClick={() => handleLogout()} className="button-login"><b>LOG OUT</b></button>&nbsp;&nbsp;&nbsp;
           <label className="name-login">
-            <b>{userN.name}</b>
+            <b>{a.name}</b>
           </label>
           &nbsp;&nbsp;&nbsp;
-         <img className="image-logo" src={userN.picture} alt="image-logo" />
-          
+           <img className="image-logo" src={a.picture} alt="image" />
         </>
       );
     } else {
+      //console.log('NO hay userN.email');
       return (
         <>
           <Link to="/login">
@@ -52,9 +69,19 @@ export default function NavBar(props) {
     }
   };
 
-  useEffect(() => { }, [userN]);
+  const prueba = async () => {
 
-  const { loginWithRedirect, user, isAuthenticated, logout, isLoading } = useAuth0();
+    let item = window.localStorage.getItem('userL');
+    if (item) {
+      console.log(JSON.parse(item));
+      let a = JSON.parse(item);
+      console.log(a.email, '<-');
+    }
+  }
+
+  useEffect(() => {
+
+  }, []);
 
   return (
     <div>
@@ -102,16 +129,10 @@ export default function NavBar(props) {
           </Popover>
         </Box>
         &nbsp;&nbsp;&nbsp;
-        {/* <Link to="/login">
-          <Button colorScheme={'red'} className="button-login"><Text textDecoration={'none'}>LOG IN</Text></Button>
-        </Link> */}
 
-        {/*   <Link to="/login">
-          <Button colorScheme={'red'} className="button-login"><Text textDecoration={'none'}>LOG IN</Text></Button>
-        </Link> */}
         {getUserData()}
 
-        {/* <Button onClick={() => logout()} colorScheme={'red'} className="button-login"><Text textDecoration={'none'}>LOG OUT</Text></Button> */}
+       {/*  <Button onClick={() => prueba()} colorScheme={'red'} className="button-login"><Text textDecoration={'none'}>PRUEBA</Text></Button> */}
       </div>
     </div>
   );
