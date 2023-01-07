@@ -16,21 +16,21 @@ root.render(
   <React.StrictMode>
     <ChakraProvider>
       <Provider store={store}>
-        <PersistGate persistor={persistor}>
-          <Auth0Provider
-            domain="dev-1vxprzx7maxyjwv7.us.auth0.com"
-            //domain={REACT_APP_DOMAIN}
-            clientId="CbwboB0RC7xwrSjegPeeYip5otVij30L"
-            //redirectUri= {window.location.origin}
-            //redirectUri="http://localhost:3000/login"
-            redirectUri="https://test-deploy-topaz-nine.vercel.app/login"
-          >
-            <App />
-          </Auth0Provider>
+        <Auth0Provider
+          domain="dev-1vxprzx7maxyjwv7.us.auth0.com"
+          //domain={REACT_APP_DOMAIN}
+          clientId="CbwboB0RC7xwrSjegPeeYip5otVij30L"
+          //redirectUri= {window.location.origin}
+          //redirectUri="http://localhost:3000/login"
+          redirectUri="https://test-deploy-topaz-nine.vercel.app/login"
+        >
+          <PersistGate loading={null} persistor={persistor}>
+          <App />
         </PersistGate>
-      </Provider>
-    </ChakraProvider>
-  </React.StrictMode>
+      </Auth0Provider>
+    </Provider>
+  </ChakraProvider>
+  </React.StrictMode >
 );
 
 // If you want to start measuring performance in your app, pass a function

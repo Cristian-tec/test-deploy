@@ -17,6 +17,6 @@ const store = createStore(
 );
 
 const persistor = persistStore(store)
-
-export default store;
 export  { persistor }//<-
+export default store;
+
