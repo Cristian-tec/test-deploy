@@ -60,7 +60,7 @@ const CreateComment = () => {
     dispatch(
       createComment({
         rating: parseInt(rating),
-        idProduct: product.id,
+        idProduct: product[0].id,
         userName: user.name,
         comment: comment,
         idUser: user.email,
@@ -68,7 +68,7 @@ const CreateComment = () => {
     );
     setComment("");
     setRating(1);
-    dispatch(getAllComments(product.id));
+    dispatch(getAllComments(product[0].id));
   }
 
   async function deleteComments(e) {
@@ -76,13 +76,13 @@ const CreateComment = () => {
 
     dispatch(
       deleteComment({
-        idProduct: product.id,
+        idProduct: product[0].id,
         idUser: user.email,
       })
     );
     setComment("");
     setRating(1);
-    dispatch(getAllComments(product.id));
+    dispatch(getAllComments(product[0].id));
   }
 
   async function editComment(e) {
@@ -101,7 +101,7 @@ const CreateComment = () => {
     );
     setComment("");
     setRating(1);
-    dispatch(getAllComments(product.id));
+    dispatch(getAllComments(product[0].id));
   }
 
   return (
