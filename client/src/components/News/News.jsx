@@ -11,7 +11,7 @@ export default function News() {
                 <NavBar />
             </Box>
 
-            <Box display={"flex"} justifyContent={"space-around"} mt={"100px"} >
+            <Box className="news-container">
                 <Box className="art-1">
                     <img src="https://s3-eu-central-1.amazonaws.com/www.burgerking.com.ar.v2/wp-media-folder-bk-argentina//home/ubuntu/preview/menu-app/frontend/apps/marketing-website-wordpress-app/web/app/uploads/sites/5/novedeades-muzzasticks.png" alt="imagen" />
                     <p>Our McBurger Muzzarella Sticks Nuggets are coming!</p>
@@ -28,7 +28,7 @@ export default function News() {
                 </Box>
             </Box>
 
-            <Box display={"flex"} justifyContent={"space-around"} mt={"100px"} >
+            <Box className="news-container">
                 <Box className="art-1">
                     <img src="https://res.cloudinary.com/djthhahkr/image/upload/v1672663961/cb361650-4730-4f5e-b796-b0fddc37a041_hnqypa.jpg" alt="imagen" />
                     <p>Burger coming for mcBurger with new XL sandwich!</p>
