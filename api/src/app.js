@@ -11,6 +11,7 @@ const mercadoPago = require("./routes/mercadoPago");
 const orders = require("./routes/orders");
 const user = require("./routes/user")
 const cors = require("cors");
+const comments = require("./routes/comments");
 
 require("./db.js");
 
@@ -42,6 +43,7 @@ server.use("/localities", localities);
 server.use("/payment", mercadoPago);
 server.use("/orders", orders);
 server.use("/user", user);
+server.use("/comments", comments);
 
 //server.use('/buyProduct', mercadoPago);
 //server.use('/orders', orders);
