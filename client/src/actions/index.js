@@ -145,7 +145,7 @@ export function addOrderToDB(params) {
 export function getAllComments(id) {
   return async function (dispatch) {
     const commentsInfo = await axios.get(
-      "http://localhost:3001/comments/product/" + id
+      "/comments/product/" + id
     );
     dispatch({
       type: GET_ALL_COMMENTS,
@@ -156,7 +156,7 @@ export function getAllComments(id) {
 
 export function createComment(payload) {
   return async function (dispatch) {
-    const info = await axios.post("http://localhost:3001/comments", payload);
+    const info = await axios.post("/comments", payload);
     dispatch({
       type: CREATE_COMMENT,
       payload: info.data,
@@ -166,7 +166,7 @@ export function createComment(payload) {
 
 export function updateComment(payload) {
   return async function (dispatch) {
-    const info = await axios.put("http://localhost:3001/comments", payload);
+    const info = await axios.put("/comments", payload);
     dispatch({
       type: UPDATE_COMMENT,
       payload: info.data,
@@ -176,7 +176,7 @@ export function updateComment(payload) {
 export function deleteComment(payload) {
   return async function (dispatch) {
     const deletedComment = await axios.delete(
-      "http://localhost:3001/comments?idUser=" +
+      "/comments?idUser=" +
         payload.idUser +
         "&idProduct=" +
         payload.idProduct
