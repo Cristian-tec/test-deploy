@@ -310,7 +310,7 @@ export default function SignInSide() {
         // aca podria cpturar un tipo de dato que ya estaria cargado
 
         // -------------------- CREACION DE LOCALSTORAGE ---------------------------------
-        let userDate = await axios.post("http://localhost:3001/user/one", { email: userN.email });
+        let userDate = await axios.post("https://test-deploy-production-3b4b.up.railway.app/user/one", { email: userN.email });
         console.log(userDate.data);
         window.localStorage.setItem('userL', JSON.stringify(userDate.data));
         // ACA PODRIA PREGUNTAR A QUE RUTA DIRIGIR SI EL USUARIO ES X UNICAMENTE
