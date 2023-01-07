@@ -24,9 +24,9 @@ root.render(
           //redirectUri="http://localhost:3000/login"
           redirectUri="https://test-deploy-topaz-nine.vercel.app/login"
         >
-          <PersistGate loading={null} persistor={persistor}>
+          {/* <PersistGate loading={null} persistor={persistor}> */}
             <App />
-          </PersistGate>
+         {/*  </PersistGate> */}
         </Auth0Provider>
       </Provider>
     </ChakraProvider>
