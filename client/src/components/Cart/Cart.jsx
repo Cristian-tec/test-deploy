@@ -57,7 +57,7 @@ export default function Cart() {
       localStorage.setItem("branchId", "1234");
       localStorage.setItem("msg", products);
 
-      const link = await addProductsToCart(p);
+      const link = await addProductsToCart(p)();
       setLink(link);
     } catch (error) {
       alert(error.message);
