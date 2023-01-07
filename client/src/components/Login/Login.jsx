@@ -291,7 +291,6 @@ export default function SignInSide() {
                 dispatch(saveUser(json.data));
                 dispatch(userActive(true));
                 handleClickOpen();
-
             }
         }
         autenticated();
@@ -309,12 +308,14 @@ export default function SignInSide() {
 
     const handleClose = async () => {
         // aca podria cpturar un tipo de dato que ya estaria cargado
-        setOpen(false);
+
         // -------------------- CREACION DE LOCALSTORAGE ---------------------------------
-        let userDate = await axios.post("https://test-deploy-production-3b4b.up.railway.app/user/one", { email: user.email });
+        let userDate = await axios.post("http://localhost:3001/user/one", { email: userN.email });
         console.log(userDate.data);
         window.localStorage.setItem('userL', JSON.stringify(userDate.data));
+        // ACA PODRIA PREGUNTAR A QUE RUTA DIRIGIR SI EL USUARIO ES X UNICAMENTE
         goRoute.push('/')
+        setOpen(false);
     };
 
     //-----------------------------------------------------------------
@@ -586,7 +587,7 @@ export default function SignInSide() {
                                 id="password"
                                 autoComplete="current-password"
                             />
-                            <button onClick={prueba}> PROBAR </button>
+                           {/*  <button onClick={prueba}> PROBAR </button> */}
                             {
                                 isLoginBD()
                             }

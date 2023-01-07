@@ -29,7 +29,7 @@ export default function NavBar(props) {
   const dispatch = useDispatch();
 
   const { loginWithRedirect, user, isAuthenticated, logout, isLoading } = useAuth0();
-
+  const userN = useSelector((state) => state.user);
   const handleLogout = () => {
     window.localStorage.setItem('userL', '');
     logout();

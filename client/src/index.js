@@ -25,11 +25,11 @@ root.render(
           redirectUri="https://test-deploy-topaz-nine.vercel.app/login"
         >
           <PersistGate loading={null} persistor={persistor}>
-          <App />
-        </PersistGate>
-      </Auth0Provider>
-    </Provider>
-  </ChakraProvider>
+            <App />
+          </PersistGate>
+        </Auth0Provider>
+      </Provider>
+    </ChakraProvider>
   </React.StrictMode >
 );
 
