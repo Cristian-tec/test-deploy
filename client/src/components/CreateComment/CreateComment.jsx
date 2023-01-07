@@ -82,7 +82,7 @@ const CreateComment = () => {
     );
     setComment("");
     setRating(1);
-    dispatch(getAllComments(product[0].id));
+    dispatch(getAllComments(product.id));
   }
 
   async function editComment(e) {
@@ -101,7 +101,7 @@ const CreateComment = () => {
     );
     setComment("");
     setRating(1);
-    dispatch(getAllComments(product[0].id));
+    dispatch(getAllComments(product.id));
   }
 
   return (
