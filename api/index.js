@@ -25,7 +25,7 @@ conn.sync({ force: true }).then(() => {
     await loadProducts();
     await loadLocalities();
     await loadBranches();
-    //  await loadUser();
+    await loadUser();
     console.log("%s ----> listening at ", PORT); // eslint-disable-line no-console
   });
 });

@@ -95,18 +95,19 @@ const findUserBbdd = async (email) => {
 
 const loadUser = async () => {
   await User.create({
-    name: "Cristian",
-    first_name: "Rafael",
-    last_name: "Ganon",
-    email: "crgs2008@gmail.com",
+    name: "Admin McBurger",
+    first_name: "Administrador",
+    last_name: "",
+    email: "admin@admin.com",
+    picture: "https://us.123rf.com/450wm/ylivdesign/ylivdesign2110/ylivdesign211012504/176252000-hombre-con-el-icono-de-administrador-de-inscripci%C3%B3n-contorno-hombre-con-la-inscripci%C3%B3n-admin-vector-.jpg?ver=6",
     password: "admin",
     userType: "admin",
     wallet: 20000,
     address: "Palo alto - California",
-    phone_number: "+542665444444",
+    phone_number: "+54-2665847544",
   });
 
-  await User.create({
+/*   await User.create({
     name: "Sandra",
     first_name: "Noemi",
     last_name: "Garay",
@@ -116,7 +117,7 @@ const loadUser = async () => {
     wallet: 50000,
     address: "Bs As - Argentina",
     phone_number: "+549988877777",
-  });
+  }); */
 };
 
 const validateToken = (req, res, next) => {
