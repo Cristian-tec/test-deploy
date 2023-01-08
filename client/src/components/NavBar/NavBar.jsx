@@ -54,7 +54,7 @@ export default function NavBar(props) {
             <b>{a.name}</b>
           </label>
           &nbsp;&nbsp;&nbsp;
-           <img className="image-logo" src={a.picture} alt="image" />
+          <img className="image-logo" src={a.picture} alt="image" />
         </>
       );
     } else {
@@ -83,6 +83,29 @@ export default function NavBar(props) {
 
   }, []);
 
+  const getFavorites = () => {
+    let item = window.localStorage.getItem('userL');
+    let a;
+    if (item) {
+      a = JSON.parse(item);
+    } else {
+      a = { email: '' };
+    }
+    if (a.email) {
+      return (
+        <>
+          <li><Link to="/favs">FAVORITES</Link></li>
+        </>
+      )
+    } else {
+      return (
+        <>
+          <li>FAVORITES</li>
+        </>
+      )
+    }
+  }
+
   return (
     <div>
       <div className="nav-container">
@@ -102,9 +125,7 @@ export default function NavBar(props) {
           <li>
             <Link to="/about">ABOUT US</Link>
           </li>
-          <li>
-            <Link to="/favs">FAVORITES</Link>
-          </li>
+          {getFavorites()}
           <li>
             <Link to="/locations">LOCATIONS</Link>
           </li>
@@ -132,7 +153,7 @@ export default function NavBar(props) {
 
         {getUserData()}
 
-       {/*  <Button onClick={() => prueba()} colorScheme={'red'} className="button-login"><Text textDecoration={'none'}>PRUEBA</Text></Button> */}
+        {/*  <Button onClick={() => prueba()} colorScheme={'red'} className="button-login"><Text textDecoration={'none'}>PRUEBA</Text></Button> */}
       </div>
     </div>
   );
