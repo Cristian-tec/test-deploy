@@ -106,6 +106,30 @@ export default function NavBar(props) {
     }
   }
 
+  const getAdmin = () => {
+    let item = window.localStorage.getItem('userL');
+    let a;
+    if (item) {
+      a = JSON.parse(item);
+    } else {
+      a = { email: '' };
+    }
+    if (a.email === 'admin@admin.com') {
+      return (
+        <>
+          <a href="https://dashboard-wine-nine.vercel.app/" target="_blank" rel="noreferrer">
+            AD
+          </a>
+        </>
+      )
+    } else {
+      return (
+        <>
+        </>
+      )
+    }
+  }
+
   return (
     <div>
       <div className="nav-container">
@@ -152,6 +176,8 @@ export default function NavBar(props) {
         &nbsp;&nbsp;&nbsp;
 
         {getUserData()}
+        &nbsp;&nbsp;
+        {getAdmin()}
 
         {/*  <Button onClick={() => prueba()} colorScheme={'red'} className="button-login"><Text textDecoration={'none'}>PRUEBA</Text></Button> */}
       </div>
