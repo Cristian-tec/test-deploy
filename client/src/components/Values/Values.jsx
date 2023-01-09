@@ -17,33 +17,33 @@ export default function Values() {
 
                 <Box m={"50px"} ml={"50px"} mr={"50px"}>
                     <Box ml={"50px"} mr={"50px"} >
-                        <Box className='image' display={"grid"}  justifyContent={"center"} width={"90%"} grid-template-columns= "repeat(auto-fill, minmax(250px, 400px))">
+                        <Box className='image' display={"grid"}  justifyContent={"center"} width={"90%"} grid-template-columns= "repeat(auto-fill, minmax(250px, 400px))" marginLeft={"5%"}>
                             <Image src="https://res.cloudinary.com/dqdrtbtuv/image/upload/v1672084663/McBurgerExtras/sustentabilidad_tmibiu.jpg" />
                         </Box>
                         <Box>
-                            <Text textAlign={"center"} marginRight={"100px"}  fontSize={"2rem"}>Sustainability Priorities</Text>
-                            <Text textAlign={"center"} marginRight={"100px"} marginBottom={"20px"} fontSize="1rem">We're making a difference in the communities we serve.</Text>
+                            <Text textAlign={"center"}   fontSize={"2rem"} display={"grid"}  justifyContent={"center"}>Sustainability Priorities</Text>
+                            <Text textAlign={"center"}   marginBottom={"20px"} fontSize="1rem" display={"grid"}  justifyContent={"center"}>We're making a difference in the communities we serve.</Text>
                         </Box>
                     </Box>
 
                     <Box ml={"50px"} mr={"50px"}>
-                        <Box className='image'  display={"grid"} justifyContent={"center"} width={"90%"} grid-template-columns= "repeat(auto-fill, minmax(250px, 400px))">
+                        <Box className='image'  display={"grid"} justifyContent={"center"} width={"90%"} grid-template-columns= "repeat(auto-fill, minmax(250px, 400px))" marginLeft={"5%"}>
                             <Image src="https://res.cloudinary.com/dqdrtbtuv/image/upload/v1672086014/McBurgerExtras/nuestravariedad_mq0h6s.jpg" />
                         </Box>
                         <Box>
-                            <Text display={"grid"} textAlign={"center"} marginRight={"100px"}  fontSize={"2rem"}>Good Food</Text>
-                            <Text display={"grid"} textAlign={"center"} marginRight={"100px"} marginBottom={"20px"}  fontSize="1rem">
+                            <Text textAlign={"center"}  fontSize={"2rem"} display={"grid"}  justifyContent={"center"}>Good Food</Text>
+                            <Text textAlign={"center"}  marginBottom={"20px"}  fontSize="1rem" display={"grid"}  justifyContent={"center"}>
                                 Check out nutrition and ingredient information to providing responsibly sourced food.
                             </Text>
                         </Box>
                     </Box>
                     <Box ml={"50px"} mr={"50px"}>
-                    <Box className='image'  display={"grid"}  justifyContent={"center"} width={"90%"}  grid-template-columns= "repeat(auto-fill, minmax(250px, 400px))">
+                    <Box className='image'  display={"grid"}  justifyContent={"center"} width={"90%"}  grid-template-columns= "repeat(auto-fill, minmax(250px, 400px))" marginLeft={"5%"}>
                     <Image src="https://res.cloudinary.com/dqdrtbtuv/image/upload/v1672085499/McBurgerExtras/elequipo_jt8wbx.jpg" />
                 </Box>
                 <Box>
-                    <Text display={"grid"} textAlign={"center"} marginRight={"100px"}  fontSize={"2rem"}>Our People & Communities</Text>
-                    <Text display={"grid"} textAlign={"center"} marginRight={"100px"} fontSize="1rem">Investing in people is a top priority. So is giving back to the community.</Text>
+                    <Text  textAlign={"center"}  fontSize={"2rem"} display={"grid"}  justifyContent={"center"}>Our People & Communities</Text>
+                    <Text  textAlign={"center"} fontSize="1rem" display={"grid"}  justifyContent={"center"}>Investing in people is a top priority. So is giving back to the community.</Text>
                 </Box>
                 </Box>
                 </Box>
