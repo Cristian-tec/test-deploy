@@ -31,7 +31,7 @@ const initialState = {
   productsFavorites: [],
   user: [],
   activeUser: false,
-  mapPosition: { status: "user", coordenates: [-34.603743591667396, -58.38151982455165] },
+  mapPosition: { coordenates: [-34.603743591667396, -58.38151982455165] },
   productDetail: {},
   productComments: [],
 };

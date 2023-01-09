@@ -1,12 +1,15 @@
-import NavBar from "../NavBar/NavBar";
-import MapView from "../MapView/MapView";
-import React, { useEffect, useState } from "react";
-import { Box, Text, Button, Input } from "@chakra-ui/react";
-import "./Locations.css";
-import "leaflet/dist/leaflet.css";
-import LocationCards from "../LocationCards/LocationCards";
+import { useCallback, useEffect, useState } from "react";
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { setNewPosition } from "../../actions";
-import { useDispatch } from 'react-redux';
+import { Box, Text, Button } from "@chakra-ui/react";
+import { MapContainer, TileLayer, Marker, Popup, useMap, Pane } from 'react-leaflet';
+import L from "leaflet";
+import userIcon from "./userIcon.png";
+import branchIcon from "./branchIcon.png";
+import NavBar from "../NavBar/NavBar";
+import "./Locations.css"
+import useGeolocation from "./MapHooks";
 
 const locations = [
     {
@@ -14,7 +17,7 @@ const locations = [
         "address": "Rioja 1634",
         "locality": "Rosario, Santa Fe",
         "gps": "Rioja 1634, S2000AYZ Rosario, Santa Fe",
-        "coordenadas": [-32.94590336646448, -60.645849691211986]
+        "coordinates": [-32.94590336646448, -60.645849691211986]
 
     },
     {
@@ -22,7 +25,7 @@ const locations = [
         "address": "Pres. Roca 549",
         "locality": "Rosario,Santa Fe",
         "gps": "Pres. Roca 549, S2000 CXK, Santa Fe",
-        "coordenadas": [-32.94212135953638, -60.64393003539277]
+        "coordinates": [-32.94212135953638, -60.64393003539277]
 
     },
     {
@@ -30,7 +33,7 @@ const locations = [
         "address": "Av. Francia 1049",
         "locality": "Rosario, Santa Fe",
         "gps": "Av. Francia 1049, S2002QRC Rosario, Santa Fe",
-        "coordenadas": [-32.9445415460106, -60.665973175868224]
+        "coordinates": [-32.9445415460106, -60.665973175868224]
 
     },
     {
@@ -38,7 +41,7 @@ const locations = [
         "address": "Sarmiento 440",
         "locality": "Victoria, Entre Ríos",
         "gps": "Sarmiento 440, E3153 Victoria, Entre Ríos",
-        "coordenadas": [-32.62093987375818, -60.15819813546795]
+        "coordinates": [-32.62093987375818, -60.15819813546795]
 
     },
     {
@@ -46,7 +49,7 @@ const locations = [
         "address": "B. Soria 152",
         "locality": "Santa Rosa de Calamuchita, Córdoba",
         "gps": "B. Soria 152, Santa Rosa de Calamuchita, Córdoba",
-        "coordenadas": [-32.0722519452947, -64.5377802067588]
+        "coordinates": [-32.0722519452947, -64.5377802067588]
 
     },
     {
@@ -54,7 +57,7 @@ const locations = [
         "address": "Av. Belgrano 1353",
         "locality": "Mina Clavero, Córdoba",
         "gps": "Av. Belgrano 1353, Mina Clavero, Córdoba",
-        "coordenadas": [-31.723296453046903, -65.00321886265864]
+        "coordinates": [-31.723296453046903, -65.00321886265864]
 
     },
     {
@@ -62,7 +65,7 @@ const locations = [
         "address": "Av. Laurencena 244",
         "locality": "Paraná, Entre Ríos",
         "gps": "Av. Laurencena 244, E3100 Paraná, Entre Ríos",
-        "coordenadas": [-31.72082203329559, -60.51870973567507]
+        "coordinates": [-31.72082203329559, -60.51870973567507]
 
     },
     {
@@ -70,7 +73,7 @@ const locations = [
         "address": "Las Magnolias 1087",
         "locality": "Federación, Entre Ríos",
         "gps": "Las Magnolias 1087, E3206CIV Federación, Entre Ríos",
-        "coordenadas": [-30.98281987592543, -57.923731551185206]
+        "coordinates": [-30.98281987592543, -57.923731551185206]
 
     },
     {
@@ -78,7 +81,7 @@ const locations = [
         "address": "Obispo Oro 333",
         "locality": "Cordoba",
         "gps": "Obispo Oro 333, X5000BFG Córdoba",
-        "coordenadas": [-31.425475097778342, -64.182947749234]
+        "coordinates": [-31.425475097778342, -64.182947749234]
 
     },
     {
@@ -86,7 +89,7 @@ const locations = [
         "address": "25 de Mayo 839",
         "locality": " Mendoza",
         "gps": "25 de Mayo 839, M5500AEA Mendoza",
-        "coordenadas": [-32.89188126757028, -68.8476694758806]
+        "coordinates": [-32.89188126757028, -68.8476694758806]
 
     },
     {
@@ -94,7 +97,7 @@ const locations = [
         "address": "Ayacucho 42",
         "locality": "Resistencia, Chaco",
         "gps": "Ayacucho 42, H3500AJB Resistencia, Chaco",
-        "coordenadas": [-27.448585915646884, -58.98280873473715]
+        "coordinates": [-27.448585915646884, -58.98280873473715]
 
     },
     {
@@ -102,51 +105,142 @@ const locations = [
         "address": "Emilio Mitre 1072",
         "locality": "CABA",
         "gps": "Parque Chacabuco, Emilio Mitre 1072, C1424AYV CABA",
-        "coordenadas": [-34.63304648837675, -58.44032369265895]
+        "coordinates": [-34.63304648837675, -58.44032369265895]
 
     }
 ]
 
-export default function Locations() {
+
+export default function Locations3() {
+
+    const zoom = 13;
     const dispatch = useDispatch();
-    const [branches, setBranches] = useState([]);
-    
-    function handleFilterUserPosition() {
-        dispatch(setNewPosition({status:"user", coordenates:[]}))
+
+    //llamo a la funcion useGeolocation la cual me retorna la ubicacion del usuario
+    const userPosition = useGeolocation().coordinates
+
+    //me traigo el estado de posicion el cual sera modificado por las cards o el boton de my position
+    const center = useSelector((state) => state.mapPosition.coordinates);
+
+    //creo un estado map (este me ayudara a hacer referencia a mi mapa)
+    const [map, setMap] = useState(null)
+
+    //funcion que retorna distancia entre 2 puntos [lat,lng]
+    const getKilometros = (lat1, lng1, lat2, lng2) => {
+        let rad = function (x) { return x * Math.PI / 180; };
+        let R = 6378.137; //Radio de la tierra en km
+        let dLat = rad(lat2 - lat1);
+        let dLong = rad(lng2 - lng1);
+        let a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(rad(lat1)) * Math.cos(rad(lat2)) * Math.sin(dLong / 2) * Math.sin(dLong / 2);
+        let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        let d = R * c;
+        return d.toFixed(2); //Retorna dos decimales
     }
-    
 
-    const getBranches = () => {
-        let array = [];
-        locations.map(branch => array.push({
-            station: branch.station,
-            address: branch.address,
-            locality: branch.locality,
-            gps: branch.gps,
-            coordenadas: branch.coordenadas
-        })
-        )
-        setBranches(array)
-    }
-
-    useEffect(() => {
-    }, [])
-
-    useEffect(() => {
-        getBranches();
-    }, [])
-
-    const cardsGenerator = () => {
-        let array = [];
-        branches.map(branch => {
-            array.push(
-                <Box>
-                    <LocationCards address={branch.address} locality={branch.locality} coordenates={branch.coordenadas} />
-                </Box>
-            )
+    //funcion que ordena las cards segun su distancia con el usuario
+    const orderByDistance = (array) => {
+        array.sort(function (a, b) {
+            a = getKilometros(userPosition.lat, userPosition.lng, a.coordinates[0], a.coordinates[1])
+            b = getKilometros(userPosition.lat, userPosition.lng, b.coordinates[0], b.coordinates[1])
+            return a - b;
         })
         return array
     }
+
+    // const branches = useSelector((state) => state.branches);
+    const branches = orderByDistance(locations)
+
+    // defino iconos
+    let iconBranch = new L.icon({
+        iconUrl: branchIcon,
+        iconSize: [40, 40], // size of the icon
+        iconAnchor: [20, 40], // point of the icon which will correspond to marker's location
+        popupAnchor: [-76, -76]// point from which the popup should open relative to the iconAnchor
+    })
+
+    let iconUser = new L.icon({
+        iconUrl: userIcon,
+        iconSize: [24, 36], // size of the icon
+        iconAnchor: [12, 36], // point of the icon which will correspond to marker's location
+        popupAnchor: [-3, -76]// point from which the popup should open relative to the iconAnchor
+    })
+
+    // funcion que llama a los marcadores
+    const getMarkers = () => {
+        let markers = [];
+        locations.map(branch => {
+            markers.push(
+                <Marker position={branch.coordinates} icon={iconBranch}>
+                    <Popup>
+                        {branch.gps} <br /> McBurger
+                    </Popup>
+                </Marker>
+            )
+        })
+        markers.push(
+            <Marker position={[userPosition.lat, userPosition.lng]} icon={iconUser}>
+                <Popup>
+                    You are here! <br />
+                </Popup>
+            </Marker>
+        )
+        return markers
+    }
+
+
+    // funcion que genera las cards
+    const CardsGenerator = () => {
+        let array = [];
+
+        const onClick = useCallback((branch) => {
+            dispatch(setNewPosition({ coordinates: branch.coordinates }))
+        },)
+
+        branches.map(branch => {
+            array.push(
+                <Box>
+                    <Box bg={"white"} mb={"30px"} h={"130px"} w={"520px"} flexDirection={"column"} padding={"10px"} borderRadius={"15px"}
+                        _hover={{ border: "2px", borderColor: "#651616", borderRadius: "15px" }} >
+                        <Box >
+                            <Text as={"b"}>
+                                {branch.address}
+                            </Text>
+                            <Text display={"block"} as={"b"}>
+                                {branch.locality}
+                            </Text>
+                            <Text fontWeight={"bold"}>
+                                distance: {getKilometros(userPosition.lat, userPosition.lng, branch.coordinates[0], branch.coordinates[1])}km
+                            </Text>
+                        </Box>
+                        <Box display={"flex"} justifyContent={"center"}>
+                            <Button colorScheme={"orange"} onClick={() => onClick(branch)}>
+                                Show in Map
+                            </Button>
+                        </Box>
+                    </Box>
+                </Box>
+            )
+        })
+
+        return array
+    }
+
+
+
+    //funcion que actualiza el mapa
+    const MapRenderUpdate = () => {
+        const map = useMap()
+        useEffect(() => {
+            console.log("Actualizo")
+            map.flyTo(center, 15)
+        }, center)
+    }
+
+    function handleFilterUserPosition() {
+        dispatch(setNewPosition({ coordinates: [userPosition.lat, userPosition.lng] }))
+    }
+
+
     
 
     return (
@@ -154,25 +248,35 @@ export default function Locations() {
             <Box>
                 <NavBar />
             </Box>
-            <Box display={"flex"} justifyContent={"space-between"} bg={"#f5ebdc"}>
-                <Box className="ubications">
-                    <Box>
-                        <Text as={'b'} fontSize={'1.5rem'}>Home / Locations</Text>
-                        <Box> </Box> {/* <Input border={'solid #000000'} display={'block'} w={'500px'} backgroundColor="white" mt="10px" mb={'10px'} placeholder="Enter your location here..." /> */}
-                        <Text  as={'b'} fontSize={'1.5rem'} mb={"20px"}>Restaurants</Text>
-                    </Box>
-                    <Box mt={"20px"}>
-                        {cardsGenerator()}
-                    </Box>
+
+            <Box className="locations">
+
+                <Box className="cards-map">
+                    <CardsGenerator />
                 </Box>
-                <Box position={"fixed"} w={"1050px"} h={"650px"} ml={"36%"} mt={"25px"}>
-                    <MapView branches={branches}/>
+
+                <Box>
+                    <Box>
+                        <MapContainer minZoom={6} center={center} zoom={zoom} scrollWheelZoom={true} className="leaflet-map-container" ref={setMap}>
+                            <TileLayer
+                                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                            />
+                            <MapRenderUpdate />
+                            {getMarkers()}
+                        </MapContainer>
+                    </Box>
+
                     <Button colorScheme={"orange"} onClick={() => handleFilterUserPosition()} mt={"10px"}>
                         My position
                     </Button>
+                
                 </Box>
-
             </Box>
+
         </Box>
     )
 }
+
+
+
