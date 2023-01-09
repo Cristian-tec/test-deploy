@@ -26,7 +26,7 @@ export const UPDATE_COMMENT = "UPDATE_COMMENT";
 export const DELETE_COMMENT = "DELETE_COMMENT";
 
 export function setNewPosition(params) {
-  return { type: "SET_NEW_POSITION", payload: params };
+  return { type: SET_NEW_POSITION, payload: params };
 }
 
 export function getAllProducts() {

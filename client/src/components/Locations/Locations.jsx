@@ -111,7 +111,10 @@ const locations = [
 ]
 
 
+
 export default function Locations3() {
+
+   //let center = [-34.603743591667396, -58.38151982455165];
 
     const zoom = 13;
     const dispatch = useDispatch();
@@ -120,7 +123,7 @@ export default function Locations3() {
     const userPosition = useGeolocation().coordinates
 
     //me traigo el estado de posicion el cual sera modificado por las cards o el boton de my position
-    const center = useSelector((state) => state.mapPosition.coordinates);
+    let center = useSelector((state) => state.mapPosition.coordinates);
 
     //creo un estado map (este me ayudara a hacer referencia a mi mapa)
     const [map, setMap] = useState(null)
@@ -252,7 +255,7 @@ export default function Locations3() {
             <Box className="locations">
 
                 <Box className="cards-map">
-                    <CardsGenerator />
+                    {<CardsGenerator />}
                 </Box>
 
                 <Box>
