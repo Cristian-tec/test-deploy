@@ -98,7 +98,7 @@ const loadUser = async () => {
     name: "Admin McBurger",
     first_name: "Administrador",
     last_name: "McBurger",
-    email: "admin@admin.com",
+    email: "admin@mcburger.com",
     picture: "https://us.123rf.com/450wm/ylivdesign/ylivdesign2110/ylivdesign211012504/176252000-hombre-con-el-icono-de-administrador-de-inscripci%C3%B3n-contorno-hombre-con-la-inscripci%C3%B3n-admin-vector-.jpg?ver=6",
     password: "admin",
     userType: "admin",
