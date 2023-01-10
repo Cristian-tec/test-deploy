@@ -195,7 +195,7 @@ export function deleteComment(payload) {
 export function getAllUserFavs(userId) {
   return async function (dispatch) {
     const res = await axios.get("/favorites/" + userId);
-    dispatch({ type: "GET_ALL_USER_FAVS", payload: res.data });
+    dispatch({ type: GET_ALL_USER_FAVS, payload: res.data });
   };
 }
 export function addProductFavorite({ product, userId }) {
@@ -204,7 +204,7 @@ export function addProductFavorite({ product, userId }) {
       productId: product.id,
       userId,
     });
-    dispatch({ type: "ADD_PRODUCT_FAVORITE", payload: product });
+    dispatch({ type: ADD_PRODUCT_FAVORITE, payload: product });
   };
 }
 export function removeProductFavorite({ product, userId }) {
@@ -216,7 +216,7 @@ export function removeProductFavorite({ product, userId }) {
         product.id
     );
     dispatch({
-      type: "REMOVE_PRODUCT_FAVORITE",
+      type: REMOVE_PRODUCT_FAVORITE,
       payload: product,
     });
   };
