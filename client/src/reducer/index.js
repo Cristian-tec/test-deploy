@@ -20,6 +20,7 @@ import {
   UPDATE_COMMENT,
   DELETE_COMMENT,
   UPDATE_RATING,
+  GET_ALL_USER_FAVS,
 } from "../actions/index";
 
 const initialState = {
@@ -161,10 +162,33 @@ function rootReducer(state = initialState, action) {
         ...state,
         cart: newCart,
       };
-    case ADD_PRODUCT_FAVORITE:
+    /*     case ADD_PRODUCT_FAVORITE:
+          return {
+            ...state,
+            productsFavorites: [...state.productsFavorites, action.payload],
+          };
+        case REMOVE_PRODUCT_FAVORITE:
+          return {
+            ...state,
+            productsFavorites: state.productsFavorites.filter(
+              (p) => p.id !== action.payload.id
+            ),
+          }; */
+    case GET_ALL_USER_FAVS:
       return {
         ...state,
-        productsFavorites: [...state.productsFavorites, action.payload],
+        productsFavorites: action.payload,
+      };
+    case ADD_PRODUCT_FAVORITE:
+      let newFav = [];
+      for (const i of state.productsFavorites) {
+        if (i.id !== action.payload.id) {
+          newFav.push(i);
+        }
+      }
+      return {
+        ...state,
+        productsFavorites: newFav,
       };
     case REMOVE_PRODUCT_FAVORITE:
       return {

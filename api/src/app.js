@@ -12,6 +12,7 @@ const orders = require("./routes/orders");
 const user = require("./routes/user")
 const cors = require("cors");
 const comments = require("./routes/comments");
+const favorites = require("./routes/favorites");
 
 require("./db.js");
 
@@ -44,6 +45,7 @@ server.use("/payment", mercadoPago);
 server.use("/orders", orders);
 server.use("/user", user);
 server.use("/comments", comments);
+server.use("/favorites", favorites);
 
 //server.use('/buyProduct', mercadoPago);
 //server.use('/orders', orders);

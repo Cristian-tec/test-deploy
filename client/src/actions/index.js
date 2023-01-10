@@ -14,8 +14,6 @@ export const ADD_TO_CART = "ADD_TO_CART";
 export const RESTART_CART = "RESTART_CART";
 export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 export const DELETE_PRODUCTS_CART = "DELETE_PRODUCTS_CART";
-export const ADD_PRODUCT_FAVORITE = "ADD_PRODUCT_FAVORITE";
-export const REMOVE_PRODUCT_FAVORITE = "REMOVE_PRODUCT_FAVORITE";
 //MAPS
 export const SET_NEW_POSITION = "SET_NEW_POSITION";
 
@@ -24,6 +22,10 @@ export const GET_ALL_COMMENTS = "GET_ALL_COMMENTS";
 export const CREATE_COMMENT = "CREATE_COMMENT";
 export const UPDATE_COMMENT = "UPDATE_COMMENT";
 export const DELETE_COMMENT = "DELETE_COMMENT";
+
+export const GET_ALL_USER_FAVS = "GET_ALL_USER_FAVS";
+export const ADD_PRODUCT_FAVORITE = "ADD_PRODUCT_FAVORITE";
+export const REMOVE_PRODUCT_FAVORITE = "REMOVE_PRODUCT_FAVORITE";
 
 export function setNewPosition(params) {
   return { type: SET_NEW_POSITION, payload: params };
@@ -113,7 +115,7 @@ export function addProductsToCart(params) {
     return json.data;
   };
 }
-export function addProductFavorite(payload) {
+/* export function addProductFavorite(payload) {
   return { type: "ADD_PRODUCT_FAVORITE", payload };
 }
 export function removeProductFavorite(id) {
@@ -121,7 +123,7 @@ export function removeProductFavorite(id) {
     type: "REMOVE_PRODUCT_FAVORITE",
     payload: id,
   };
-}
+} */
 export function saveUser(params) {
   return { type: "SAVE_USER", payload: params };
 }
@@ -184,6 +186,38 @@ export function deleteComment(payload) {
     dispatch({
       type: DELETE_COMMENT,
       payload: deletedComment.data,
+    });
+  };
+}
+
+//----------------------------------------------
+
+export function getAllUserFavs(userId) {
+  return async function (dispatch) {
+    const res = await axios.get("/favorites/" + userId);
+    dispatch({ type: "GET_ALL_USER_FAVS", payload: res.data });
+  };
+}
+export function addProductFavorite({ product, userId }) {
+  return async function (dispatch) {
+    const res = await axios.post("/favorites", {
+      productId: product.id,
+      userId,
+    });
+    dispatch({ type: "ADD_PRODUCT_FAVORITE", payload: product });
+  };
+}
+export function removeProductFavorite({ product, userId }) {
+  return async function (dispatch) {
+    const res = await axios.delete(
+      "/favorites/?userId=" +
+        userId +
+        "&productId=" +
+        product.id
+    );
+    dispatch({
+      type: "REMOVE_PRODUCT_FAVORITE",
+      payload: product,
     });
   };
 }
