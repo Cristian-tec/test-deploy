@@ -114,7 +114,7 @@ export default function NavBar(props) {
     } else {
       a = { email: '' };
     }
-    if (a.email === 'admin@admin.com') {
+    if (a.email === 'admin@mcburger.com') {
       return (
         <>
           <a href="https://dashboard-wine-nine.vercel.app/" target="_blank" rel="noreferrer">
