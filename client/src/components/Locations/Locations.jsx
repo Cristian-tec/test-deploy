@@ -10,137 +10,109 @@ import branchIcon from "./branchIcon.png";
 import NavBar from "../NavBar/NavBar";
 import "./Locations.css"
 import useGeolocation from "./MapHooks";
+import Footer from "../Footer/Footer";
 
 const locations = [
-        {
-            "station": 1,
-            "address": "Rioja 1634",
-            "locality": "Rosario, Santa Fe",
-            "gps": "Rioja 1634, S2000AYZ Rosario, Santa Fe",
-            "coordinates":[-32.94590336646448, -60.645849691211986] 
-          
-    
-        },
-        {
-            "station": 2,
-            "address": "Juramento 521",
-            "locality": "Huinca Renanco, Córdoba",
-            "gps": "Juramento 521, X6270 Huinca Renanco, Córdoba",
-            "coordinates":[-34.84297996763283, -64.37832272962657]
-            
-        },
-        {
-            "station": 3,
-            "address": "Jerónimo Salguero 829",
-            "locality": "CABA",
-            "gps": "Jerónimo Salguero 829, C1192 CABA",
-            "coordinates":[-34.600036696188404, -58.4187063]
-            
-        },
-        {
-            "station": 4,
-            "address": "Sarmiento 440",
-            "locality": "Victoria, Entre Ríos",
-            "gps": "Sarmiento 440, E3153 Victoria, Entre Ríos",
-            "coordinates":[-32.62093987375818, -60.15819813546795]
-           
-        },
-        {
-            "station": 5,
-            "address": "B. Soria 152",
-            "locality": "Santa Rosa de Calamuchita, Córdoba",
-            "gps": "B. Soria 152, Santa Rosa de Calamuchita, Córdoba",
-            "coordinates":[-32.0722519452947, -64.5377802067588]
-            
-        },
-        {
-            "station": 6,
-            "address": "Av. Pte. Juan Domingo Perón 390",
-            "locality": "San Luis",
-            "gps": "AAD, Av. Pte. Juan Domingo Perón 390, D5702 San Luis",
-            "coordinates":[-33.30476258181199, -66.32542942883597]
-          
-        },
-        {
-            "station": 7,
-            "address": "Av. Laurencena 244",
-            "locality": "Paraná, Entre Ríos",
-            "gps": "Av. Laurencena 244, E3100 Paraná, Entre Ríos",
-            "coordinates":[-31.72082203329559, -60.51870973567507]
-            
-        },
-        {
-            "station": 8,
-            "address": "San Martín 22",
-            "locality": "Corrientes",
-            "gps": "San Martín 22, W3400APB Corrientes",
-            "coordinates":[-27.468365406454765, -58.85224041307138]
-            
-        },
-        {
-            "station": 9,
-            "address": "Bartolomé Mitre 4001",
-            "locality": "CABA",
-            "gps": "Bartolomé Mitre 4001, C1201AAY CABA",
-            "coordinates":[-34.60969271734928, -58.42293974497908]
-     
-        },
-        {
-            "station": 10,
-            "address": "25 de Mayo 839",
-            "locality": " Mendoza",
-            "gps": "25 de Mayo 839, M5500AEA Mendoza",
-            "coordinates":[-32.89188126757028, -68.8476694758806]
-         
-        },
-        {
-            "station": 11,
-            "address": "Ayacucho 42",
-            "locality": "Resistencia, Chaco",
-            "gps": "Ayacucho 42, H3500AJB Resistencia, Chaco",
-            "coordinates":[-27.448585915646884, -58.98280873473715]
-           
-        },
-        {
-            "station": 12,
-            "address": "Emilio Mitre 1072",
-            "locality": "CABA",
-            "gps": "Parque Chacabuco, Emilio Mitre 1072, C1424AYV CABA",
-            "coordinates":[-34.63304648837675, -58.44032369265895]
-           
-        },
-        {
-            "station": 13,
-            "address": "Avenida Argentina 235",
-            "locality": "Neuquén",
-            "gps": "Avenida Argentina 235, Q8300 Neuquén",
-            "coordinates":[-38.95244392757725, -68.05868577365065]
-           
-        },
-        {
-            "station": 14,
-            "address": "Puerto Argentino/Stanley FIQQ 1ZZ",
-            "locality": "Islas Malvinas (Falkland Islands)",
-            "gps": "Puerto Argentino/Stanley FIQQ 1ZZ, Islas Malvinas (Falkland Islands)",
-            "coordinates":[-51.69440327326043, -57.85718138843394]
-           
-        },
-        {
-            "station": 15,
-            "address": "Gregoria Pérez 1288",
-            "locality": "Islas Malvinas (Falkland Islands)",
-            "gps": "Gregoria Pérez 1288, B1708ATL Morón, Provincia de Buenos Aires",
-            "coordinates":[-34.684245656379694, -58.631214889156354]
-           
-        }
+    {
+        "station": 1,
+        "address": "Rioja 1634",
+        "locality": "Rosario, Santa Fe",
+        "gps": "Rioja 1634, S2000AYZ Rosario, Santa Fe",
+        "coordinates": [-32.94590336646448, -60.645849691211986]
+
+    },
+    {
+        "station": 2,
+        "address": "Pres. Roca 549",
+        "locality": "Rosario,Santa Fe",
+        "gps": "Pres. Roca 549, S2000 CXK, Santa Fe",
+        "coordinates": [-32.94212135953638, -60.64393003539277]
+
+    },
+    {
+        "station": 3,
+        "address": "Av. Francia 1049",
+        "locality": "Rosario, Santa Fe",
+        "gps": "Av. Francia 1049, S2002QRC Rosario, Santa Fe",
+        "coordinates": [-32.9445415460106, -60.665973175868224]
+
+    },
+    {
+        "station": 4,
+        "address": "Sarmiento 440",
+        "locality": "Victoria, Entre Ríos",
+        "gps": "Sarmiento 440, E3153 Victoria, Entre Ríos",
+        "coordinates": [-32.62093987375818, -60.15819813546795]
+
+    },
+    {
+        "station": 5,
+        "address": "B. Soria 152",
+        "locality": "Santa Rosa de Calamuchita, Córdoba",
+        "gps": "B. Soria 152, Santa Rosa de Calamuchita, Córdoba",
+        "coordinates": [-32.0722519452947, -64.5377802067588]
+
+    },
+    {
+        "station": 6,
+        "address": "Av. Belgrano 1353",
+        "locality": "Mina Clavero, Córdoba",
+        "gps": "Av. Belgrano 1353, Mina Clavero, Córdoba",
+        "coordinates": [-31.723296453046903, -65.00321886265864]
+
+    },
+    {
+        "station": 7,
+        "address": "Av. Laurencena 244",
+        "locality": "Paraná, Entre Ríos",
+        "gps": "Av. Laurencena 244, E3100 Paraná, Entre Ríos",
+        "coordinates": [-31.72082203329559, -60.51870973567507]
+
+    },
+    {
+        "station": 8,
+        "address": "Las Magnolias 1087",
+        "locality": "Federación, Entre Ríos",
+        "gps": "Las Magnolias 1087, E3206CIV Federación, Entre Ríos",
+        "coordinates": [-30.98281987592543, -57.923731551185206]
+
+    },
+    {
+        "station": 9,
+        "address": "Obispo Oro 333",
+        "locality": "Cordoba",
+        "gps": "Obispo Oro 333, X5000BFG Córdoba",
+        "coordinates": [-31.425475097778342, -64.182947749234]
+
+    },
+    {
+        "station": 10,
+        "address": "25 de Mayo 839",
+        "locality": " Mendoza",
+        "gps": "25 de Mayo 839, M5500AEA Mendoza",
+        "coordinates": [-32.89188126757028, -68.8476694758806]
+
+    },
+    {
+        "station": 11,
+        "address": "Ayacucho 42",
+        "locality": "Resistencia, Chaco",
+        "gps": "Ayacucho 42, H3500AJB Resistencia, Chaco",
+        "coordinates": [-27.448585915646884, -58.98280873473715]
+
+    },
+    {
+        "station": 12,
+        "address": "Emilio Mitre 1072",
+        "locality": "CABA",
+        "gps": "Parque Chacabuco, Emilio Mitre 1072, C1424AYV CABA",
+        "coordinates": [-34.63304648837675, -58.44032369265895]
+
+    }
 ]
 
-
-
-export default function Locations3() {
-
-   //let center = [-34.603743591667396, -58.38151982455165];
-
+export default function Locations() {
+    let center = [-34.603743591667396, -58.38151982455165]
     const zoom = 13;
     const dispatch = useDispatch();
 
@@ -148,7 +120,7 @@ export default function Locations3() {
     const userPosition = useGeolocation().coordinates
 
     //me traigo el estado de posicion el cual sera modificado por las cards o el boton de my position
-    let center = useSelector((state) => state.mapPosition.coordinates);
+    center = useSelector((state) => state.mapPosition.coordinates);
 
     //creo un estado map (este me ayudara a hacer referencia a mi mapa)
     const [map, setMap] = useState(null)
@@ -215,7 +187,6 @@ export default function Locations3() {
         return markers
     }
 
-
     // funcion que genera las cards
     const CardsGenerator = () => {
         let array = [];
@@ -226,10 +197,9 @@ export default function Locations3() {
 
         branches.map(branch => {
             array.push(
-                <Box>
-                    <Box bg={"white"} mb={"30px"} h={"130px"} w={"520px"} flexDirection={"column"} padding={"10px"} borderRadius={"15px"}
-                        _hover={{ border: "2px", borderColor: "#651616", borderRadius: "15px" }} >
-                        <Box >
+                <Box className={"big-cards-map-container"} >
+                    <Box className="cards-map-container" _hover={{ border: "2px", borderColor: "#651616", borderRadius: "15px" }} >
+                        <Box className="text-map-cards-container">
                             <Text as={"b"}>
                                 {branch.address}
                             </Text>
@@ -240,8 +210,8 @@ export default function Locations3() {
                                 distance: {getKilometros(userPosition.lat, userPosition.lng, branch.coordinates[0], branch.coordinates[1])}km
                             </Text>
                         </Box>
-                        <Box display={"flex"} justifyContent={"center"}>
-                            <Button colorScheme={"orange"} onClick={() => onClick(branch)}>
+                        <Box  className="button-card-map">
+                            <Button colorScheme={"orange"} onClick={() => {onClick(branch); window.scroll(0, 0)}}>
                                 Show in Map
                             </Button>
                         </Box>
@@ -249,11 +219,8 @@ export default function Locations3() {
                 </Box>
             )
         })
-
         return array
     }
-
-
 
     //funcion que actualiza el mapa
     const MapRenderUpdate = () => {
@@ -264,44 +231,50 @@ export default function Locations3() {
         }, center)
     }
 
+    //modifica el estado con la posicion del usuario
     function handleFilterUserPosition() {
         dispatch(setNewPosition({ coordinates: [userPosition.lat, userPosition.lng] }))
     }
 
-
-    
-
     return (
-        <Box>
+        <Box bg={"#f5ebdc"}>
             <Box>
                 <NavBar />
             </Box>
 
             <Box className="locations">
 
-                <Box className="cards-map">
-                    {<CardsGenerator />}
-                </Box>
+                <Box className="map-and-cards-container">
 
-                <Box>
-                    <Box>
-                        <MapContainer minZoom={6} center={center} zoom={zoom} scrollWheelZoom={true} className="leaflet-map-container" ref={setMap}>
-                            <TileLayer
-                                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                            />
-                            <MapRenderUpdate />
-                            {getMarkers()}
-                        </MapContainer>
+                    <Box  className="map-button-container">
+
+                        <Box className="map-container">
+                            <MapContainer minZoom={6} center={center} zoom={zoom} scrollWheelZoom={true} className="leaflet-map-container" ref={setMap}>
+                                <TileLayer
+                                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                                />
+                                <MapRenderUpdate />
+                                {getMarkers()}
+                            </MapContainer>
+                        </Box>
+                        <Box className="button-my-position-container">
+                            <Box className="button-my-position">
+                        <Button colorScheme={"orange"} onClick={() => handleFilterUserPosition()} mt={"10px"}>
+                            My position
+                        </Button>
+                        </Box>
+                        </Box>
+
                     </Box>
-
-                    <Button colorScheme={"orange"} onClick={() => handleFilterUserPosition()} mt={"10px"}>
-                        My position
-                    </Button>
-                
+                    
+                    <Box className="cards-map">
+                        <CardsGenerator />
+                    </Box>
                 </Box>
-            </Box>
 
+            </Box>
+            
         </Box>
     )
 }
