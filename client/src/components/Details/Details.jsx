@@ -1,11 +1,17 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import NavBar from "../NavBar/NavBar";
-import Footer from "../Footer/Footer"
-import { Button, Box, Text } from '@chakra-ui/react';
-import { getProductID, addToCart, removeFromCart, addProductFavorite, } from "../../actions";
+import Footer from "../Footer/Footer";
+import { Button, Box, Text } from "@chakra-ui/react";
+import {
+  getProductID,
+  addToCart,
+  removeFromCart,
+  addProductFavorite,
+} from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
 import "./Details.css";
+import CreateComment from "../CreateComment/CreateComment";
 
 function Details() {
   const { id } = useParams();
@@ -15,7 +21,11 @@ function Details() {
     dispatch(getProductID(id));
   }, [id, dispatch]);
 
-  const [product, cart, user] = useSelector((state) => [state.product, state.cart, state.user]);
+  const [product, cart, user] = useSelector((state) => [
+    state.product,
+    state.cart,
+    state.user,
+  ]);
 
   return (
     <div>
@@ -49,23 +59,42 @@ function Details() {
               </div>
             </div>
             {!cart.hasOwnProperty(product[0].id) ? (
-              <Button size='lg' colorScheme='green' marginTop="30px" onClick={() => dispatch(addToCart(product[0]))}>
+              <Button
+                size="lg"
+                colorScheme="green"
+                marginTop="30px"
+                onClick={() => dispatch(addToCart(product[0]))}
+              >
                 Add to cart
               </Button>
             ) : (
               <Box display="flex" justifyContent="center" alignItems="center">
-                <Button marginRight="20px" onClick={() => dispatch(removeFromCart(product[0]))}>
+                <Button
+                  marginRight="20px"
+                  onClick={() => dispatch(removeFromCart(product[0]))}
+                >
                   -
                 </Button>
-                <Text as="b" fontSize='3xl'>{cart[product[0].id].quantity}</Text>
-                <Button marginLeft="20px" onClick={() => dispatch(addToCart(product[0]))}>
+                <Text as="b" fontSize="3xl">
+                  {cart[product[0].id].quantity}
+                </Text>
+                <Button
+                  marginLeft="20px"
+                  onClick={() => dispatch(addToCart(product[0]))}
+                >
                   +
                 </Button>
               </Box>
             )}
           </div>
           <div>
-            <Button onClick={() => addProductFavorite({ product: product[0], userId: user.email })(dispatch)}>
+            <Button
+              onClick={() =>
+                addProductFavorite({ product: product[0], userId: user.email })(
+                  dispatch
+                )
+              }
+            >
               🤍
             </Button>
           </div>
@@ -80,6 +109,7 @@ function Details() {
         </div>
       )}
       <div>
+        <CreateComment />
         <Footer />
       </div>
     </div>
@@ -87,7 +117,6 @@ function Details() {
 }
 
 export default Details;
-
 
 /* import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
