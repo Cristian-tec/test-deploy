@@ -70,7 +70,7 @@ export default function SignInSide() {
         //Obtenemos latitud y longitud
         lat = pos.coords.latitude;
         long = pos.coords.longitude;
-  
+
 
         const coordinates = (lat + ' ' + long);
         // console.log(coordinates + ' <<===');
@@ -531,88 +531,90 @@ export default function SignInSide() {
 
 
     return (
-        <ThemeProvider theme={theme}>
+        <div>
             <NavBar />
-            {/* <button onClick={() => console.log(userN)}>PROBAR GEOLOCALIZ</button> */}
-            <Grid container component="main" sx={{ height: '100vh' }}>
-                <CssBaseline />
-                <Grid
-                    item
-                    xs={false}
-                    sm={4}
-                    md={7}
-                    sx={{
-                        backgroundImage: 'url(https://media.istockphoto.com/id/511484502/es/foto/hamburguesa-con-queso-y-tocino-con-queso-y.jpg?s=612x612&w=0&k=20&c=QHjjrvjpkfB_9Lsxhn5wC_JcZKJ4b_4blmA5bWgT-40=)',
-                        backgroundRepeat: 'no-repeat',
-                        backgroundColor: (t) =>
-                            t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                    }}
-                />
-                <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-                    <Box
+            <ThemeProvider theme={theme}>
+                {/* <button onClick={() => console.log(userN)}>PROBAR GEOLOCALIZ</button> */}
+                <Grid container component="main" sx={{ height: '100vh' }}>
+                    <CssBaseline />
+                    <Grid
+                        item
+                        xs={false}
+                        sm={4}
+                        md={7}
                         sx={{
-                            my: 8,
-                            mx: 4,
-                            display: 'flex',
-                            flexDirection: 'column',
-                            alignItems: 'center',
+                            backgroundImage: 'url(https://media.istockphoto.com/id/511484502/es/foto/hamburguesa-con-queso-y-tocino-con-queso-y.jpg?s=612x612&w=0&k=20&c=QHjjrvjpkfB_9Lsxhn5wC_JcZKJ4b_4blmA5bWgT-40=)',
+                            backgroundRepeat: 'no-repeat',
+                            backgroundColor: (t) =>
+                                t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center',
                         }}
-                    >
-                        <Avatar sx={{ m: 1, bgcolor: 'black', width: 100, height: 100 }} src={logo}>
-                            {/*  <LockOutlinedIcon /> */}
-                        </Avatar>
-                        <Typography component="h1" variant="h5">
-                            Mc Burguer
-                        </Typography>
-                        <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
-                            <TextField
-                                margin="normal"
-                                required
-                                fullWidth
-                                id="email"
-                                label="Email Address"
-                                name="email"
-                                autoComplete="email"
-                                autoFocus
-                            />
-                            <TextField
-                                margin="normal"
-                                required
-                                fullWidth
-                                name="password"
-                                label="Password"
-                                type="password"
-                                id="password"
-                                autoComplete="current-password"
-                            />
-                           {/*  <button onClick={prueba}> PROBAR </button> */}
+                    />
+                    <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+                        <Box
+                            sx={{
+                                my: 8,
+                                mx: 4,
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                            }}
+                        >
+                            <Avatar sx={{ m: 1, bgcolor: 'black', width: 100, height: 100 }} src={logo}>
+                                {/*  <LockOutlinedIcon /> */}
+                            </Avatar>
+                            <Typography component="h1" variant="h5">
+                                Mc Burguer
+                            </Typography>
+                            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+                                <TextField
+                                    margin="normal"
+                                    required
+                                    fullWidth
+                                    id="email"
+                                    label="Email Address"
+                                    name="email"
+                                    autoComplete="email"
+                                    autoFocus
+                                />
+                                <TextField
+                                    margin="normal"
+                                    required
+                                    fullWidth
+                                    name="password"
+                                    label="Password"
+                                    type="password"
+                                    id="password"
+                                    autoComplete="current-password"
+                                />
+                                {/*  <button onClick={prueba}> PROBAR </button> */}
+                                {
+                                    isLoginBD()
+                                }
+
+                            </Box>
                             {
-                                isLoginBD()
+                                (isAuthenticated) ? isLogin() : isLogout()
                             }
-
                         </Box>
-                        {
-                            (isAuthenticated) ? isLogin() : isLogout()
-                        }
-                    </Box>
+                    </Grid>
                 </Grid>
-            </Grid>
-            {/* DIALOG MESSAGE */}
-            <Dialog
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="alert-dialog-title"
-                aria-describedby="alert-dialog-description"
-            >
+                {/* DIALOG MESSAGE */}
+                <Dialog
+                    open={open}
+                    onClose={handleClose}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                >
 
-                <DialogContent>
-                    {updateUser()}
-                </DialogContent>
-            </Dialog>
+                    <DialogContent>
+                        {updateUser()}
+                    </DialogContent>
+                </Dialog>
 
-        </ThemeProvider>
+            </ThemeProvider>
+        </div>
     );
 }
 
