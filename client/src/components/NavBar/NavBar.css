@@ -6,7 +6,7 @@
 }
 
 .nav-container {
-  background-color: #f5ebdc;
+  background-color: #651616;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,14 +15,14 @@
 
 .nav-container a {
   text-decoration: none;
-  color: #651616;
+  color: #ffffff;
   font-size: 18px;
   font-weight: bold;
 }
 
 .nav-container a:hover {
   text-decoration: underline;
-  color: #651616;
+  color: #ffffff;
   font-size: 18px;
 }
 
@@ -55,4 +55,8 @@
   height: 40px;
   width: 40px;
   border-radius: 20px;
+}
+
+.name-login b{
+  color: rgb(255, 255, 255);
 }

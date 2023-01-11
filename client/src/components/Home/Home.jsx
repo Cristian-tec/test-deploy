@@ -43,7 +43,7 @@ export default function Home() {
 
         <div className="acceso-directo22">
           <img
-            src="https://www.freepnglogos.com/uploads/fries-png/premium-french-fries-photos-7.png"
+            src="https://res.cloudinary.com/dqdrtbtuv/image/upload/v1673409490/McBurgerExtras/3._Papas_dt9soq.png"
             alt="Imagen"
           />
           <h4>French Fries</h4>
