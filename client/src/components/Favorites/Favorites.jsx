@@ -23,30 +23,30 @@ function Favorites() {
     state.cart,
   ]);
 
-  //************************************************************
-/*   let item = window.localStorage.getItem('userL');
-  let a;
-  if (item) {
-    a = JSON.parse(item);
-  } else {
-    a = { email: '' };
-  } */
 
-  //*************************************************************
 
 
   useEffect(() => {
 
-    const test = async () =>{
-      if (user.email){
-        const favoritos = await getAllUserFavs(user.email)(dispatch);
+    //************************************************************
+    let item = window.localStorage.getItem('userL');
+    let a;
+    if (item) {
+      a = JSON.parse(item);
+    } else {
+      a = { email: '' };
+    }
+
+    //*************************************************************
+
+    const test = async () => {
+      if (a.email) {
+        const favoritos = await getAllUserFavs(a.email)(dispatch);
         window.localStorage.setItem('favoritos', JSON.stringify(favoritos))
-      } 
+      }
     }
 
     test();
-    
-
 
   }, [dispatch, user.email, productsFavorites]);
 
