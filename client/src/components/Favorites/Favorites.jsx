@@ -22,9 +22,33 @@ function Favorites() {
     state.user,
     state.cart,
   ]);
+
+  //************************************************************
+/*   let item = window.localStorage.getItem('userL');
+  let a;
+  if (item) {
+    a = JSON.parse(item);
+  } else {
+    a = { email: '' };
+  } */
+
+  //*************************************************************
+
+
   useEffect(() => {
-    if (user.email) getAllUserFavs(user.email)(dispatch);
-  }, [dispatch, user.email]);
+
+    const test = async () =>{
+      if (user.email){
+        const favoritos = await getAllUserFavs(user.email)(dispatch);
+        window.localStorage.setItem('favoritos', JSON.stringify(favoritos))
+      } 
+    }
+
+    test();
+    
+
+
+  }, [dispatch, user.email, productsFavorites]);
 
   return (
     <div className="cont">
@@ -38,39 +62,39 @@ function Favorites() {
         <hr style={{ border: "grey solid 1px" }} />
       </Link>
       <div className="cont-fav-cards">
-      {productsFavorites?.map((p) => (
-      <div className="cards-container-fav">
-          <div>
-            <div className="bt">
-              <button
-                onClick={() =>
-                  removeProductFavorite({
-                    product: p,
-                    userId: user.email,
-                  })(dispatch)
-                }
-              >
-                <RiDeleteBin6Line />
-              </button>
-            </div>
-            <img className="detail-Img" src={p.image} />
+        {productsFavorites?.map((p) => (
+          <div className="cards-container-fav">
+            <div>
+              <div className="bt">
+                <button
+                  onClick={() =>
+                    removeProductFavorite({
+                      product: p,
+                      userId: user.email,
+                    })(dispatch)
+                  }
+                >
+                  <RiDeleteBin6Line />
+                </button>
               </div>
-              <div className="detail-Text-Container">
-                <Box textAlign={"center"}>
-                  <Text className="detail-Title">{p.name}</Text>
-                </Box>
-                <div className="detail-Label-Container-Price">
-                  <p className="detailLabelPrice">Price: </p>
-                  <p>&nbsp;&nbsp;</p>
-                  <p className="detailPrice">{p.price}</p>
-                </div>
-                <div className="detailLabelContainer"></div>
+              <img className="detail-Img" src={p.image} />
+            </div>
+            <div className="detail-Text-Container">
+              <Box textAlign={"center"}>
+                <Text className="detail-Title">{p.name}</Text>
+              </Box>
+              <div className="detail-Label-Container-Price">
+                <p className="detailLabelPrice">Price: </p>
+                <p>&nbsp;&nbsp;</p>
+                <p className="detailPrice">{p.price}</p>
+              </div>
+              <div className="detailLabelContainer"></div>
               <Link to={"/product/" + p.id} key={p.id}>
                 <Button size='md' colorScheme='orange' marginLeft={"39%"} marginBottom={"5%"}>Detail</Button>
               </Link>
-              </div>
             </div>
-      ))}
+          </div>
+        ))}
       </div>
       <div>
         <Footer />
