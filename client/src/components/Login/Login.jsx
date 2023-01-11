@@ -383,7 +383,7 @@ export default function SignInSide() {
     //-------------------------------------------------------
     const updateUser = () => {
         let state;
-        (!userN.first_name || !userN.last_name || !userN.phone_number || !userN.address || !userN.password) ? state = true : state = false
+        (!userN.first_name || !userN.last_name || !userN.phone_number || !userN.address) ? state = true : state = false
         if (state === true) {
             return (
                 <>
