@@ -3,7 +3,12 @@ import { useParams } from "react-router-dom";
 import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
 import { Button, Box, Text } from "@chakra-ui/react";
-import { getProductID, addToCart, removeFromCart, addProductFavorite, } from "../../actions";
+import {
+  getProductID,
+  addToCart,
+  removeFromCart,
+  addProductFavorite,
+} from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
 import "./Details.css";
 import CreateComment from "../CreateComment/CreateComment";
@@ -11,8 +16,6 @@ import CreateComment from "../CreateComment/CreateComment";
 function Details() {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const favorites = useSelector((state) => state.productsFavorites);
-  /*   let activeAddToCar = "disabled"; */
 
   useEffect(() => {
     dispatch(getProductID(id));
@@ -27,7 +30,7 @@ function Details() {
   return (
     <div>
       <NavBar />
-      {product[0] ?
+      {product[0] ? 
         <div className="detailContainer">
           <div className="innerDetailContainer">
             <div className="detailImgContainer">
@@ -56,18 +59,16 @@ function Details() {
               </div>
             </div>
             <div>
-              <Button mt={'30px'} mb={'30px'} colorScheme='yellow'
-                onClick={() =>
-                  addProductFavorite({ product: product[0], userId: user.email })(
-                    dispatch
-                  )
-                }
-              >
-                {favorites.includes(product[0])
-                  ? <div >🧡</div>
-                  : <div>🤍</div>}
-              </Button>
-            </div>
+            <Button mt={'30px'} mb={'30px'} colorScheme='yellow' 
+              onClick={() =>
+                addProductFavorite({ product: product[0], userId: user.email })(
+                  dispatch
+                )
+              }
+            >
+              🤍
+            </Button>
+          </div>
             {!cart.hasOwnProperty(product[0].id) ? (
               <Button
                 size="lg"
@@ -97,17 +98,17 @@ function Details() {
               </Box>
             )}
           </div>
-
+         
         </div>
-        : (
-          <div className="detailContainer">
-            <div className="innerDetailContainer">
-              {/*  <h1 className="unknownProduct">
-                404 Opps, it seems we don't have that product
-              </h1> */}
-            </div>
+       : (
+        <div className="detailContainer">
+          <div className="innerDetailContainer">
+            {/* <h1 className="unknownProduct">
+              404 Opps, it seems we don't have that product
+            </h1> */}
           </div>
-        )}
+        </div>
+      )}
       <div>
         <CreateComment />
         <Footer />
