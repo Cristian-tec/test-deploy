@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "./Details.css";
 import CreateComment from "../CreateComment/CreateComment";
 import { useState } from 'react';
+import swal from "sweetalert";
 
 function Details() {
   const { id } = useParams();
@@ -76,10 +77,16 @@ function Details() {
             </div>
             <div>
               <Button mt={'30px'} mb={'30px'} colorScheme='yellow'
-                onClick={() =>
+                onClick={() => {
                   addProductFavorite({ product: product[0], userId: user.email })(
                     dispatch
                   )
+                  /* alert('Product agregado') */
+                  swal("Product added!!", {
+                    buttons: false,
+                    timer: 800,
+                  })
+                }
                 }
               >
                 {favorites.includes(product[0])

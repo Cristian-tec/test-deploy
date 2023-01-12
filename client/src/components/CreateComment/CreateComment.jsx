@@ -109,14 +109,20 @@ const CreateComment = () => {
 
   return (
     <div className="conten">
-      <label className="product-rating">Product rating: {generalRating}</label>
-      <div>
-
+      <b>
+        <label className="overall">
+          {" "}
+          Overall product rating: {generalRating}
+        </label>
+      </b>
+      <>
         {isAuthenticated && user.name ? (
           userComment.length === 0 ? (
-            <div className="create-comment">
+            <div>
               <div className="rating">
-                <label>Rating:</label>
+                <b>
+                  <label>Rating:</label>&nbsp;&nbsp;
+                </b>
                 <br />
                 <div>
                   {[...Array(5)].map((star, i) => {
@@ -161,29 +167,28 @@ const CreateComment = () => {
               </div>
             </div>
           ) : (
-            <div className="alredy-comment">
+            <div>
               <p>You already made your comment!</p>
             </div>
           )
         ) : (
-          <p className="advertence"> To leave a comment, please login</p>
+          <p> To leave a comment, please login</p>
         )}
-      </div>
+      </>
 
       <div>
         {comments.length ? (
-          <div className="comments-container">
-            {/* <h3>Comments:</h3> */}
+          <div>
+            <h3>Comments:</h3>
             {comments.map((c) => {
               return (
-                <div key={c.comment + c.idUser} className="each-comment-container">
-                  <p className="user-name">{c.userName}:</p>
-
-                  <p className="text-comment">{c.comment}</p>
-
+                <div key={c.comment + c.idUser} className="contenComments">
                   {!show ? (
-                    <div className="rating-container">
+                    <div>
+                      <p>{c.userName}</p>
+                      <h4>Rating:</h4>
                       <div>
+                        <p>{c.rating}</p>
                         <div
                           style={{
                             display: "flex",
@@ -205,12 +210,15 @@ const CreateComment = () => {
                   ) : (
                     <></>
                   )}
+
+                  <p>{c.comment}</p>
+
                   <div>
                     {c.idUser === user.email ? (
                       <div>
                         {show ? (
                           <div>
-                            <div className="rating-post-container">
+                            <div className="rating">
                               <label>Rating:</label>
                               <br />
                               {[...Array(5)].map((star, i) => {
@@ -239,7 +247,7 @@ const CreateComment = () => {
                               })}
                               <br />
                             </div>
-                            <div className="comment-post">
+                            <div className="comment">
                               <textarea
                                 className="textarea"
                                 cols={50}
@@ -250,15 +258,16 @@ const CreateComment = () => {
                                 onChange={(e) => handleComment(e)}
                               />
                             </div>
+
                             <button
-                              className="button"
+                              className="btn"
                               onClick={(e) => editComment(e)}
                             >
                               Accept
                             </button>
                             <br />
                             <button
-                              className="button"
+                              className="btn"
                               onClick={(e) => setShow(!show)}
                             >
                               Cancel
@@ -271,7 +280,7 @@ const CreateComment = () => {
                         <div>
                           {!show ? (
                             <button
-                              className="button"
+                              className="btn"
                               onClick={(e) => setShow(!show)}
                             >
                               Edit
@@ -281,7 +290,7 @@ const CreateComment = () => {
                           )}
                           <br />
                           <button
-                            className="button"
+                            className="btn"
                             onClick={(e) => deleteComments(e)}
                           >
                             Delete
@@ -297,9 +306,7 @@ const CreateComment = () => {
             })}
           </div>
         ) : (
-          <div>
-            <p className="no-comment">No comment</p>
-          </div>
+          <p className="noComment">No comment</p>
         )}
       </div>
     </div>
