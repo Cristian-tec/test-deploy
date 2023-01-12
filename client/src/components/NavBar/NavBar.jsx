@@ -29,25 +29,9 @@ import { saveUser, eraseUser, userActive } from '../../actions/index'
 export default function NavBar(props) {
 
   const navRef = useRef();
-  const [scrollEnabled, setScrollEnabled] = useState(true);
-
-  function disableScroll() {
-    document.body.style.overflow = 'hidden';
-  }
-
-  function enableScroll() {
-    document.body.style.overflow = 'auto';
-  }
 
   const handleClick = () => {
     showNavBar();
-    if (scrollEnabled) {
-      disableScroll();
-      setScrollEnabled(false);
-    } else {
-      enableScroll();
-      setScrollEnabled(true);
-    }
   }
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -116,19 +100,17 @@ export default function NavBar(props) {
     item ? a = JSON.parse(item) : a = { email: '' }
 
     if (a.email) {
-      //console.log('hay userN.email');
       return (
-
         <div className="log-out-min">
-
+          
           <div className="button-login-min">
             <button onClick={() => handleLogout()} ><b>LOG OUT</b></button>
           </div>
+
         </div>
 
       );
     } else {
-      //console.log('NO hay userN.email');
       return (
         <div>
           <Link to="/login">
@@ -148,7 +130,6 @@ export default function NavBar(props) {
       console.log(a.email, '<-');
     }
   }
-
 
   const getFavorites = () => {
     let item = window.localStorage.getItem('userL');
