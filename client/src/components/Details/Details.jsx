@@ -7,14 +7,17 @@ import { getProductID, addToCart, removeFromCart, addProductFavorite, } from "..
 import { useDispatch, useSelector } from "react-redux";
 import "./Details.css";
 import CreateComment from "../CreateComment/CreateComment";
+import { useState } from 'react';
 
 function Details() {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const favorites = useSelector ((state) => state.productsFavorites);
+  const favorites = useSelector((state) => state.productsFavorites);
+  /*   let activeAddToCar = "disabled"; */
 
   useEffect(() => {
     dispatch(getProductID(id));
+    getFavorites();
   }, [id, dispatch]);
 
   const [product, cart, user] = useSelector((state) => [
@@ -22,6 +25,23 @@ function Details() {
     state.cart,
     state.user,
   ]);
+
+  const [state, setState] = useState();
+
+  const getFavorites = () => {
+    let item = window.localStorage.getItem('userL');
+    let a;
+    if (item) {
+      a = JSON.parse(item);
+    } else {
+      a = { email: '' };
+    }
+    if (a.email) {
+      setState('')
+    } else {
+      setState('disable')
+    }
+  }
 
   return (
     <div>
@@ -63,8 +83,8 @@ function Details() {
                 }
               >
                 {favorites.includes(product[0])
-                ?<div >🧡</div>
-                :<div>🤍</div>}
+                  ? <div >🧡</div>
+                  : <div>🤍</div>}
               </Button>
             </div>
             {!cart.hasOwnProperty(product[0].id) ? (
@@ -72,6 +92,7 @@ function Details() {
                 size="lg"
                 colorScheme="green"
                 marginTop="30px"
+                disabled={state}
                 onClick={() => dispatch(addToCart(product[0]))}
               >
                 Add to cart
@@ -101,7 +122,7 @@ function Details() {
         : (
           <div className="detailContainer">
             <div className="innerDetailContainer">
-             {/*  <h1 className="unknownProduct">
+              {/*  <h1 className="unknownProduct">
                 404 Opps, it seems we don't have that product
               </h1> */}
             </div>
