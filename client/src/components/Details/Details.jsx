@@ -7,7 +7,7 @@ import { getProductID, addToCart, removeFromCart, addProductFavorite, } from "..
 import { useDispatch, useSelector } from "react-redux";
 import "./Details.css";
 import CreateComment from "../CreateComment/CreateComment";
-import { useState } from 'react';
+/* import { useState } from 'react'; */
 
 function Details() {
   const { id } = useParams();
@@ -17,7 +17,7 @@ function Details() {
 
   useEffect(() => {
     dispatch(getProductID(id));
-    getFavorites();
+   /*  getFavorites(); */
   }, [id, dispatch]);
 
   const [product, cart, user] = useSelector((state) => [
@@ -26,9 +26,9 @@ function Details() {
     state.user,
   ]);
 
-  const [state, setState] = useState('');
+/*   const [state, setState] = useState(''); */
 
-  const getFavorites = () => {
+/*   const getFavorites = () => {
     let item = window.localStorage.getItem('userL');
     let a;
     if (item) {
@@ -42,7 +42,7 @@ function Details() {
       setState('disable')
     }
   }
-
+ */
   return (
     <div>
       <NavBar />
@@ -92,7 +92,7 @@ function Details() {
                 size="lg"
                 colorScheme="green"
                 marginTop="30px"
-                disabled={state}
+/*                 disabled={state} */
                 onClick={() => dispatch(addToCart(product[0]))}
               >
                 Add to cart
