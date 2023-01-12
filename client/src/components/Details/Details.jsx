@@ -3,22 +3,21 @@ import { useParams } from "react-router-dom";
 import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
 import { Button, Box, Text } from "@chakra-ui/react";
-import {
-  getProductID,
-  addToCart,
-  removeFromCart,
-  addProductFavorite,
-} from "../../actions";
+import { getProductID, addToCart, removeFromCart, addProductFavorite, } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
 import "./Details.css";
 import CreateComment from "../CreateComment/CreateComment";
+import { useState } from 'react';
 
 function Details() {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const favorites = useSelector((state) => state.productsFavorites);
+  /*   let activeAddToCar = "disabled"; */
 
   useEffect(() => {
     dispatch(getProductID(id));
+    getFavorites();
   }, [id, dispatch]);
 
   const [product, cart, user] = useSelector((state) => [
@@ -27,10 +26,27 @@ function Details() {
     state.user,
   ]);
 
+  const [state, setState] = useState('');
+
+  const getFavorites = () => {
+    let item = window.localStorage.getItem('userL');
+    let a;
+    if (item) {
+      a = JSON.parse(item);
+    } else {
+      a = { email: '' };
+    }
+    if (a.email) {
+      setState('')
+    } else {
+      setState('disable')
+    }
+  }
+
   return (
     <div>
       <NavBar />
-      {product[0] ? 
+      {product[0] ?
         <div className="detailContainer">
           <div className="innerDetailContainer">
             <div className="detailImgContainer">
@@ -59,21 +75,24 @@ function Details() {
               </div>
             </div>
             <div>
-            <Button mt={'30px'} mb={'30px'} colorScheme='yellow' 
-              onClick={() =>
-                addProductFavorite({ product: product[0], userId: user.email })(
-                  dispatch
-                )
-              }
-            >
-              🤍
-            </Button>
-          </div>
+              <Button mt={'30px'} mb={'30px'} colorScheme='yellow'
+                onClick={() =>
+                  addProductFavorite({ product: product[0], userId: user.email })(
+                    dispatch
+                  )
+                }
+              >
+                {favorites.includes(product[0])
+                  ? <div >🧡</div>
+                  : <div>🤍</div>}
+              </Button>
+            </div>
             {!cart.hasOwnProperty(product[0].id) ? (
               <Button
                 size="lg"
                 colorScheme="green"
                 marginTop="30px"
+                disabled={state}
                 onClick={() => dispatch(addToCart(product[0]))}
               >
                 Add to cart
@@ -98,17 +117,17 @@ function Details() {
               </Box>
             )}
           </div>
-         
+
         </div>
-       : (
-        <div className="detailContainer">
-          <div className="innerDetailContainer">
-            {/* <h1 className="unknownProduct">
-              404 Opps, it seems we don't have that product
-            </h1> */}
+        : (
+          <div className="detailContainer">
+            <div className="innerDetailContainer">
+              {/*  <h1 className="unknownProduct">
+                404 Opps, it seems we don't have that product
+              </h1> */}
+            </div>
           </div>
-        </div>
-      )}
+        )}
       <div>
         <CreateComment />
         <Footer />
