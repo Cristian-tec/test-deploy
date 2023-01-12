@@ -26,7 +26,7 @@ function Details() {
     state.user,
   ]);
 
-  const [state, setState] = useState();
+  const [state, setState] = useState('');
 
   const getFavorites = () => {
     let item = window.localStorage.getItem('userL');
